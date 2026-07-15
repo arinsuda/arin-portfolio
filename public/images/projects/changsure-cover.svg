@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#121420" />
+  
+  <!-- Subtle Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1" />
+    </pattern>
+    <linearGradient id="cyan-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)" />
+  
+  <!-- Abstract Design Shapes -->
+  <circle cx="600" cy="225" r="120" fill="none" stroke="url(#cyan-blue)" stroke-width="4" opacity="0.3" />
+  <circle cx="600" cy="225" r="80" fill="none" stroke="url(#cyan-blue)" stroke-width="2" stroke-dasharray="10 5" opacity="0.4" />
+  <circle cx="600" cy="225" r="40" fill="url(#cyan-blue)" opacity="0.1" />
+  <path d="M 400 100 L 700 225 L 400 350" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.2" />
+  
+  <!-- Text Content -->
+  <rect x="50" y="80" width="80" height="30" rx="6" fill="#06b6d4" fill-opacity="0.1" stroke="#06b6d4" stroke-width="1" />
+  <text x="90" y="100" font-family="'Outfit', sans-serif" font-size="12" font-weight="600" fill="#06b6d4" text-anchor="middle">GO BACKEND</text>
+  
+  <text x="50" y="170" font-family="'Outfit', sans-serif" font-size="44" font-weight="800" fill="#f8fafc">ChangSure</text>
+  <text x="50" y="210" font-family="'Inter', sans-serif" font-size="16" fill="#94a3b8">Home-Service Booking Platform</text>
+  
+  <text x="50" y="280" font-family="'Fira Code', monospace" font-size="14" fill="#06b6d4">Go Fiber • GORM • MySQL • EasyOCR</text>
+  
+  <!-- Conceptual Visual Tag -->
+  <rect x="50" y="360" width="160" height="26" rx="4" fill="rgba(0, 0, 0, 0.4)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+  <text x="130" y="377" font-family="'Inter', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">CONCEPTUAL VISUAL</text>
+</svg>

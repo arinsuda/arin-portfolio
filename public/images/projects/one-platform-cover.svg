@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#121420" />
+  
+  <!-- Subtle Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1" />
+    </pattern>
+    <linearGradient id="blue-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)" />
+  
+  <!-- Abstract Design Shapes -->
+  <g opacity="0.25">
+    <rect x="500" y="100" width="220" height="150" rx="12" fill="none" stroke="url(#blue-cyan)" stroke-width="3" />
+    <circle cx="550" cy="180" r="30" fill="none" stroke="url(#blue-cyan)" stroke-width="2" />
+    <path d="M 600 150 H 680 M 600 180 H 660 M 600 210 H 690" stroke="url(#blue-cyan)" stroke-width="2" stroke-linecap="round" />
+  </g>
+  
+  <!-- Lock overlay symbol -->
+  <g transform="translate(680, 240) scale(1.5)" fill="none" stroke="#e11d48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+  </g>
+  
+  <!-- Text Content -->
+  <rect x="50" y="80" width="90" height="30" rx="6" fill="#e11d48" fill-opacity="0.1" stroke="#e11d48" stroke-width="1" />
+  <text x="95" y="100" font-family="'Outfit', sans-serif" font-size="12" font-weight="600" fill="#e11d48" text-anchor="middle">CONFIDENTIAL</text>
+  
+  <text x="50" y="170" font-family="'Outfit', sans-serif" font-size="44" font-weight="800" fill="#f8fafc">ONE PLATFORM</text>
+  <text x="50" y="210" font-family="'Inter', sans-serif" font-size="16" fill="#94a3b8">Enterprise Management Client (Internship)</text>
+  
+  <text x="50" y="280" font-family="'Fira Code', monospace" font-size="14" fill="#64748b">Vue 3 • TypeScript • Pinia • Socket.IO • ECharts</text>
+  
+  <!-- Confidentiality Warning Banner -->
+  <rect x="50" y="340" width="400" height="50" rx="8" fill="rgba(225, 29, 72, 0.05)" stroke="rgba(225, 29, 72, 0.2)" stroke-width="1" />
+  <text x="70" y="362" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#f43f5e">PROPRIETARY ENTERPRISE SOFTWARE</text>
+  <text x="70" y="378" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8">Codebase and designs are confidential under NDA.</text>
+</svg>

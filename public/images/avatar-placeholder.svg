@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="avatar-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#121420" stroke="url(#avatar-grad)" stroke-width="4" />
+  <circle cx="100" cy="100" r="85" fill="url(#avatar-grad)" opacity="0.15" />
+  
+  <!-- Monogram Initials -->
+  <text x="100" y="115" font-family="'Outfit', sans-serif" font-size="56" font-weight="800" fill="#f8fafc" text-anchor="middle" letter-spacing="-1">AS</text>
+  
+  <!-- Inner boundary circle -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="url(#avatar-grad)" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.4" />
+</svg>
