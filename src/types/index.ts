@@ -48,10 +48,19 @@ export interface ProjectContribution {
   details: string[];
 }
 
+export type ProjectLinkType =
+  | "repository"
+  | "team-repository"
+  | "showcase"
+  | "live-demo"
+  | "video";
+
 export interface ProjectLink {
+  type: ProjectLinkType;
   label: string;
   url: string;
-  type: 'github' | 'live' | 'showcase';
+  isExternal: boolean;
+  ownershipNote?: string;
 }
 
 export interface Project {

@@ -37,11 +37,11 @@
 
     <!-- Case Study Body Content -->
     <div class="container case-study-container">
-      <!-- Confidentiality Warning Banner (if applicable) -->
+      <!-- Confidentiality / Repository Notice Banner -->
       <div v-if="project.confidentialityNote" class="confidential-banner">
         <BaseIcon name="lock" size="20" stroke-width="2.5" class="confidential-banner-icon" />
         <div>
-          <strong>Confidentiality Notice:</strong> {{ project.confidentialityNote }}
+          <strong>Notice:</strong> {{ project.confidentialityNote }}
         </div>
       </div>
 
@@ -124,18 +124,25 @@
           <div class="sidebar-block glass-card actions-block" v-if="project.links &amp;&amp; project.links.length > 0">
             <h3 class="sidebar-title">Project Links</h3>
             <div class="action-buttons">
-              <a 
+              <div 
                 v-for="(link, lIdx) in project.links"
                 :key="lIdx"
-                :href="link.url" 
-                target="_blank" 
-                rel="noopener" 
-                class="btn"
-                :class="link.type === 'github' ? 'btn-primary' : 'btn-secondary'"
+                class="link-action-container"
               >
-                <BaseIcon :name="link.type === 'github' ? 'github' : 'external-link'" size="16" class="btn-icon-spacing" />
-                {{ link.label }}
-              </a>
+                <a 
+                  :href="link.url" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="btn action-btn-link"
+                  :class="link.type === 'repository' || link.type === 'team-repository' ? 'btn-primary' : 'btn-secondary'"
+                >
+                  <BaseIcon :name="link.type === 'repository' || link.type === 'team-repository' ? 'github' : 'external-link'" size="16" class="btn-icon-spacing" />
+                  {{ link.label }}
+                </a>
+                <p v-if="link.ownershipNote" class="link-ownership-note">
+                  {{ link.ownershipNote }}
+                </p>
+              </div>
             </div>
           </div>
         </aside>
@@ -549,11 +556,28 @@ const project = computed(() => {
 .action-buttons {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.action-buttons .btn {
+.link-action-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.action-btn-link {
   width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-ownership-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  padding-left: 0.25rem;
 }
 
 .btn-icon-spacing {
