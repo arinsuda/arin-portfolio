@@ -139,7 +139,8 @@ export const projects: Project[] = [
       "PostgreSQL",
       "MinIO",
       "Docker Compose",
-      "TMDB API"
+      "TMDB API",
+      "Socket.IO"
     ]
   },
   {
