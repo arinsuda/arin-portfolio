@@ -2,7 +2,7 @@
   <nav class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
     <div class="navbar-container">
       <router-link to="/" class="logo-link">
-        <span class="logo-text">Arin<span class="text-gradient">.S</span></span>
+        <span class="logo-text">A<span class="text-gradient">rin</span></span>
       </router-link>
 
       <!-- Desktop Navigation Menu -->
