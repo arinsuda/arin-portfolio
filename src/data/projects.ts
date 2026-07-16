@@ -749,12 +749,12 @@ export const projects: Project[] = [
         src: "/images/projects/kradan-kanban/gallery/kradan-kanban-1.svg",
         isPlaceholder: true,
         alt: {
-          en: "Temporary Kradan Kanban project image placeholder 1",
-          th: "รูปตัวอย่างชั่วคราวของโปรเจกต์ Kradan Kanban 1",
+          en: "Project board dashboard separating personally owned boards from shared collaboration workspaces.",
+          th: "หน้าแดชบอร์ด Project Board ที่แยกบอร์ดส่วนตัวออกจากบอร์ดที่ได้รับสิทธิ์ร่วมงาน",
         },
         caption: {
-          en: "Kanban board layout and tasks cards visualization placeholder",
-          th: "ภาพโครงสร้างคอลัมน์และการ์ดจัดการกระบวนการทำงาน",
+          en: "Personal and shared project board management.",
+          th: "การจัดการ Project Board ส่วนตัวและบอร์ดที่ทำงานร่วมกัน",
         },
       },
       {
@@ -762,12 +762,12 @@ export const projects: Project[] = [
         src: "/images/projects/kradan-kanban/gallery/kradan-kanban-2.svg",
         isPlaceholder: true,
         alt: {
-          en: "Temporary Kradan Kanban project image placeholder 2",
-          th: "รูปตัวอย่างชั่วคราวของโปรเจกต์ Kradan Kanban 2",
+          en: "Task and workflow configuration covering task creation, assignment, status management, and customizable status colors.",
+          th: "การจัดการงานและ Workflow ครอบคลุมการสร้างงาน มอบหมายผู้รับผิดชอบ จัดการสถานะ และกำหนดสีของสถานะ",
         },
         caption: {
-          en: "Spring Boot Controller-Service-Repository layered flow structure placeholder",
-          th: "แผนภูมิแสดงลำดับชั้นข้อมูลจาก Controller ไประดับฐานข้อมูลด้วย JPA",
+          en: "Task creation, assignment, and customizable workflow statuses.",
+          th: "การสร้างงาน มอบหมายผู้รับผิดชอบ และกำหนดสถานะ Workflow",
         },
       },
       {
@@ -775,12 +775,12 @@ export const projects: Project[] = [
         src: "/images/projects/kradan-kanban/gallery/kradan-kanban-3.svg",
         isPlaceholder: true,
         alt: {
-          en: "Temporary Kradan Kanban project image placeholder 3",
-          th: "รูปตัวอย่างชั่วคราวของโปรเจกต์ Kradan Kanban 3",
+          en: "Task detail and user profile views displaying assignment information, status, timestamps, and account details.",
+          th: "หน้ารายละเอียดงานและโปรไฟล์ผู้ใช้ ซึ่งแสดงผู้รับผิดชอบ สถานะ เวลาแก้ไขข้อมูล และรายละเอียดบัญชี",
         },
         caption: {
-          en: "Spring Security filter chain pipeline architecture placeholder",
-          th: "แผนผังการไหลของระบบตรวจสอบสิทธิ์ผ่านด่านตรวจ JWT Security",
+          en: "Task details, assignment data, and user profile information.",
+          th: "รายละเอียดงาน ข้อมูลผู้รับผิดชอบ และโปรไฟล์ผู้ใช้งาน",
         },
       },
       {
@@ -788,12 +788,12 @@ export const projects: Project[] = [
         src: "/images/projects/kradan-kanban/gallery/kradan-kanban-4.svg",
         isPlaceholder: true,
         alt: {
-          en: "Temporary Kradan Kanban project image placeholder 4",
-          th: "รูปตัวอย่างชั่วคราวของโปรเจกต์ Kradan Kanban 4",
+          en: "Board collaboration management for reviewing members and controlling access to a shared project board.",
+          th: "หน้าจัดการผู้ร่วมงานในบอร์ด สำหรับตรวจสอบสมาชิกและควบคุมสิทธิ์การเข้าถึง Project Board",
         },
         caption: {
-          en: "MySQL database tables layout schema mapping configuration placeholder",
-          th: "ความสัมพันธ์ระหว่างตารางงาน ตารางบอร์ด และระดับสิทธิ์ของกลุ่มผู้ร่วมงาน",
+          en: "Board member and collaboration access management.",
+          th: "การจัดการสมาชิกและสิทธิ์การทำงานร่วมกันในบอร์ด",
         },
       },
       {
@@ -801,12 +801,12 @@ export const projects: Project[] = [
         src: "/images/projects/kradan-kanban/gallery/kradan-kanban-5.svg",
         isPlaceholder: true,
         alt: {
-          en: "Temporary Kradan Kanban project image placeholder 5",
-          th: "รูปตัวอย่างชั่วคราวของโปรเจกต์ Kradan Kanban 5",
+          en: "Collaborator invitation flow with email validation and configurable read or write access permissions.",
+          th: "ขั้นตอนเพิ่มผู้ร่วมงานด้วยอีเมล พร้อม Validation และการกำหนดสิทธิ์แบบอ่านหรือแก้ไขข้อมูล",
         },
         caption: {
-          en: "API endpoint lists validation and exception responses overview",
-          th: "แบบร่างเอกสารการทดสอบระบบส่งกลับข้อผิดพลาดที่มีการควบคุมรูปแบบ",
+          en: "Collaborator invitation with read and write access controls.",
+          th: "การเพิ่มผู้ร่วมงานพร้อมกำหนดสิทธิ์อ่านและแก้ไข",
         },
       },
     ],
