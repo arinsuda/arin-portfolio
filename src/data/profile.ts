@@ -1,4 +1,5 @@
 import type { Profile } from "../types"
+import { withBase } from "../utils/assets";
 
 export const profile: Profile = {
   name: "Arin Sudakijjathorn",
@@ -6,11 +7,11 @@ export const profile: Profile = {
     en: "Backend-Focused Full Stack Developer",
     th: "นักพัฒนาซอฟต์แวร์สาย Backend & Full-Stack",
   },
-  avatar: "/images/profile/me-1.svg", // primary fallback
+  avatar: withBase("images/profile/me-1.svg"), // primary fallback
   profileImages: [
     {
       id: "me-1",
-      src: "/images/profile/me-6.jpg",
+      src: withBase("images/profile/me-6.jpg"),
       isPrimary: true,
       alt: {
         en: "Temporary primary profile image placeholder",
@@ -19,7 +20,7 @@ export const profile: Profile = {
     },
     {
       id: "me-2",
-      src: "/images/profile/me-4.JPG",
+      src: withBase("images/profile/me-4.JPG"),
       alt: {
         en: "Temporary profile image placeholder 2",
         th: "รูปโปรไฟล์ตัวอย่างชั่วคราว 2",
@@ -27,7 +28,7 @@ export const profile: Profile = {
     },
     {
       id: "me-3",
-      src: "/images/profile/me-5.jpg",
+      src: withBase("images/profile/me-5.jpg"),
       alt: {
         en: "Temporary profile image placeholder 3",
         th: "รูปโปรไฟล์ตัวอย่างชั่วคราว 3",
@@ -35,7 +36,7 @@ export const profile: Profile = {
     },
     {
       id: "me-4",
-      src: "/images/profile/me-3.JPG",
+      src: withBase("images/profile/me-3.JPG"),
       alt: {
         en: "Temporary profile image placeholder 4",
         th: "รูปโปรไฟล์ตัวอย่างชั่วคราว 4",
@@ -43,7 +44,7 @@ export const profile: Profile = {
     },
     {
       id: "me-5",
-      src: "/images/profile/me-1.JPG",
+      src: withBase("images/profile/me-1.JPG"),
       alt: {
         en: "Temporary profile image placeholder 5",
         th: "รูปโปรไฟล์ตัวอย่างชั่วคราว 5",

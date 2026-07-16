@@ -87,7 +87,7 @@
         <!-- Resume Actions -->
         <div class="resume-actions-group">
           <a
-            href="/documents/Arin_Sudakijjathorn_Full_Stack_Developer_Resume.pdf"
+            :href="withBase('documents/Arin_Sudakijjathorn_Full_Stack_Developer_Resume.pdf')"
             target="_blank"
             rel="noopener noreferrer"
             class="resume-btn"
@@ -98,7 +98,7 @@
           </a>
 
           <a
-            href="/documents/Arin_Sudakijjathorn_Full_Stack_Developer_Resume.pdf"
+            :href="withBase('documents/Arin_Sudakijjathorn_Full_Stack_Developer_Resume.pdf')"
             download="Arin_Sudakijjathorn_Full_Stack_Developer_Resume.pdf"
             class="resume-btn"
             :title="
@@ -158,6 +158,7 @@
   import BaseIcon from "../components/BaseIcon.vue"
   import { profile } from "../data/profile"
   import { useI18n } from "../i18n"
+  import { withBase } from "../utils/assets"
 
   const { t, locale } = useI18n()
 

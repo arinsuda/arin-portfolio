@@ -1,4 +1,5 @@
 import type { Project } from "../types"
+import { withBase } from "../utils/assets";
 
 export const projects: Project[] = [
   {
@@ -12,7 +13,7 @@ export const projects: Project[] = [
       en: "ONE PLATFORM is a proprietary enterprise management system built for the construction industry. During my Software Engineer Internship, I contributed as a Frontend Developer, collaborating with a cross-functional Scrum team. I was responsible for building complex workflows, interactive executive dashboards, dynamic gantt chart timeline representations, role-based access control, digital signature features, and real-time notification alerts.",
       th: "ONE PLATFORM เป็นระบบการจัดการธุรกิจระดับองค์กรในอุตสาหกรรมก่อสร้าง ในช่วงฝึกงานในตำแหน่งวิศวกรซอฟต์แวร์ ผมได้ร่วมพัฒนาในฐานะ Frontend Developer ทำงานร่วมกับทีมพัฒนาแบบข้ามสายงาน (Cross-functional) ตามกรอบการทำงาน Agile/Scrum โดยรับผิดชอบการสร้างระบบการชำระเงิน นำเสนอภาพจำลองตารางเวลาจาก Jira สร้างหน้าสรุปข้อมูลผู้บริหาร (Executive Dashboards) จัดการสิทธิ์การเข้าถึง และระบบแจ้งเตือนแบบเรียลไทม์",
     },
-    thumbnail: "/images/projects/one-platform-cover.svg",
+    thumbnail: withBase("images/projects/one-platform-cover.svg"),
     category: "featured",
     tags: ["Vue 3", "TypeScript", "Pinia", "Socket.IO", "Vue-ECharts"],
     role: {
@@ -154,7 +155,7 @@ export const projects: Project[] = [
       en: "ChangSure is a year 4 senior capstone home-service booking platform that connects customers with local technicians. The system supports the complete service workflow including technician registration, document verification, service discovery, schedule bookings, WebSocket chat, background email notifications, and Omise payments. As the sole Backend, Database, and Infrastructure Developer on this team project, I designed and built the entire core backend services, relational schema database, and VM deployment network.",
       th: "ChangSure เป็นแพลตฟอร์มจองช่างซ่อมแซมบ้านสำหรับโครงงานวิจัยจบปีที่ 4 ที่เชื่อมโยงลูกค้ากับช่างเทคนิคในพื้นที่ ระบบรองรับขั้นตอนการบริการที่ครบวงจร ได้แก่ การลงทะเบียนช่าง การยืนยันเอกสาร การค้นหาบริการ การจองเวลาทำงาน ระบบแชทเรียลไทม์ผ่าน WebSocket การแจ้งเตือนอีเมลพื้นหลัง และการชำระเงินผ่าน Omise ในฐานะนักพัฒนา Backend, Database และ Infrastructure เพียงคนเดียวในโปรเจกต์กลุ่มนี้ ผมออกแบบและสร้างบริการหลังบ้านหลักทั้งหมด โครงสร้างฐานข้อมูลเชิงสัมพันธ์ และเครือข่ายการนำระบบขึ้นใช้งานบน Virtual Machine",
     },
-    thumbnail: "/images/projects/changsure-cover.svg",
+    thumbnail: withBase("images/projects/changsure-cover.svg"),
     category: "featured",
     tags: ["Go", "GORM", "MySQL", "Docker", "REST API"],
     role: {
@@ -322,7 +323,7 @@ export const projects: Project[] = [
     gallery: [
       {
         id: "changsure-1",
-        src: "/images/projects/changsure/gallery/changsure-1.svg",
+        src: withBase("images/projects/changsure/gallery/changsure-1.svg"),
         isPlaceholder: true,
         alt: {
           en: "Core customer journey covering service discovery, technician selection, appointment booking, and booking status tracking.",
@@ -335,7 +336,7 @@ export const projects: Project[] = [
       },
       {
         id: "changsure-2",
-        src: "/images/projects/changsure/gallery/changsure-2.svg",
+        src: withBase("images/projects/changsure/gallery/changsure-2.svg"),
         isPlaceholder: true,
         alt: {
           en: "Service details, booking management, and real-time communication between customers and technicians.",
@@ -348,7 +349,7 @@ export const projects: Project[] = [
       },
       {
         id: "changsure-3",
-        src: "/images/projects/changsure/gallery/changsure-3.svg",
+        src: withBase("images/projects/changsure/gallery/changsure-3.svg"),
         isPlaceholder: true,
         alt: {
           en: "Technician administration and account verification workflows, including identity onboarding and email OTP confirmation.",
@@ -361,7 +362,7 @@ export const projects: Project[] = [
       },
       {
         id: "changsure-4",
-        src: "/images/projects/changsure/gallery/changsure-4.svg",
+        src: withBase("images/projects/changsure/gallery/changsure-4.svg"),
         isPlaceholder: true,
         alt: {
           en: "System deployment architecture connecting client applications, backend services, databases, object storage, payments, and monitoring tools.",
@@ -374,7 +375,7 @@ export const projects: Project[] = [
       },
       {
         id: "changsure-5",
-        src: "/images/projects/changsure/gallery/changsure-5.svg",
+        src: withBase("images/projects/changsure/gallery/changsure-5.svg"),
         isPlaceholder: true,
         alt: {
           en: "Technology stack and engineering toolchain used across frontend, backend, infrastructure, testing, monitoring, and CI/CD.",
@@ -398,7 +399,7 @@ export const projects: Project[] = [
       en: "REMOV is a solo personal project designed as a community hub for movie and TV enthusiasts to publish media reviews, track personal libraries, and connect. The prototype utilizes a Go Fiber backend service alongside GORM, PostgreSQL, and MinIO object storage, with a Vue 3 Composition API client. It is under active, ongoing development.",
       th: "REMOV เป็นโปรเจกต์ส่วนตัวที่ทำขึ้นคนเดียว ออกแบบมาเป็นศูนย์กลางชุมชนสำหรับผู้ชื่นชอบภาพยนตร์และรายการทีวีเพื่อแบ่งปันความคิดเห็น ติดตามรายการรับชม และสร้างปฏิสัมพันธ์ร่วมกัน ตัวระบบต้นแบบพัฒนาโดยใช้ Go Fiber และ GORM ในส่วนของ backend ร่วมกับ PostgreSQL และ MinIO ในขณะที่ฝั่งผู้ใช้งานพัฒนาด้วย Vue 3 Composition API ปัจจุบันระบบยังอยู่ภายใต้กระบวนการพัฒนาอย่างต่อเนื่อง",
     },
-    thumbnail: "/images/projects/remov-cover.svg",
+    thumbnail: withBase("images/projects/remov-cover.svg"),
     category: "featured",
     tags: ["Vue 3", "Go", "PostgreSQL", "Vite", "REST API"],
     role: {
@@ -559,7 +560,7 @@ export const projects: Project[] = [
     gallery: [
       {
         id: "remov-1",
-        src: "/images/projects/remov/gallery/remov-1.svg",
+        src: withBase("images/projects/remov/gallery/remov-1.svg"),
         isPlaceholder: true,
         alt: {
           en: "Authentication flows covering account registration and secure user login.",
@@ -572,7 +573,7 @@ export const projects: Project[] = [
       },
       {
         id: "remov-2",
-        src: "/images/projects/remov/gallery/remov-2.svg",
+        src: withBase("images/projects/remov/gallery/remov-2.svg"),
         isPlaceholder: true,
         alt: {
           en: "Movie discovery experience featuring searchable catalogs, category filters, upcoming releases, and curated content sections.",
@@ -585,7 +586,7 @@ export const projects: Project[] = [
       },
       {
         id: "remov-3",
-        src: "/images/projects/remov/gallery/remov-3.svg",
+        src: withBase("images/projects/remov/gallery/remov-3.svg"),
         isPlaceholder: true,
         alt: {
           en: "Movie detail experience combining media information, trailers, personal library actions, ratings, and community reviews.",
@@ -598,7 +599,7 @@ export const projects: Project[] = [
       },
       {
         id: "remov-4",
-        src: "/images/projects/remov/gallery/remov-4.svg",
+        src: withBase("images/projects/remov/gallery/remov-4.svg"),
         isPlaceholder: true,
         alt: {
           en: "Achievement system with unlock conditions, progress tracking, category filters, and completion status.",
@@ -611,7 +612,7 @@ export const projects: Project[] = [
       },
       {
         id: "remov-5",
-        src: "/images/projects/remov/gallery/remov-5.svg",
+        src: withBase("images/projects/remov/gallery/remov-5.svg"),
         isPlaceholder: true,
         alt: {
           en: "Global media search and profile management features, including account information and profile customization.",
@@ -635,7 +636,7 @@ export const projects: Project[] = [
       en: "Kradan Kanban is a year 3 academic team project delivering a task management web application. It supports collaborator boards, columns ordering, task creations, and permission controls. My individual work was centered on the backend services layers, relational mappings, and Spring Security integration.",
       th: "Kradan Kanban เป็นโครงการแบบกลุ่มวิชาเรียนปี 3 ในการสร้างเว็บแอปพลิเคชันจัดการงานแบบคัมบัง รองรับการเชิญสมาชิกเข้าบอร์ดงาน การจัดระเบียบลำดับคอลัมน์ การสร้างงาน และการกำหนดระดับสิทธิ์ควบคุมการแก้ไขงาน ผลงานส่วนบุคคลของผมเน้นไปที่การสร้างบริการระบบฝั่งหลังบ้าน การเชื่อมความสัมพันธ์ตารางข้อมูลเชิงวัตถุ และการรวมระบบความปลอดภัยด้วย Spring Security",
     },
-    thumbnail: "/images/projects/kradan-kanban-cover.svg",
+    thumbnail: withBase("images/projects/kradan-kanban-cover.svg"),
     category: "additional",
     tags: ["Java", "Spring Boot", "MySQL", "Spring Security", "JPA"],
     role: {
@@ -746,7 +747,7 @@ export const projects: Project[] = [
     gallery: [
       {
         id: "kradan-kanban-1",
-        src: "/images/projects/kradan-kanban/gallery/kradan-kanban-1.svg",
+        src: withBase("images/projects/kradan-kanban/gallery/kradan-kanban-1.svg"),
         isPlaceholder: true,
         alt: {
           en: "Project board dashboard separating personally owned boards from shared collaboration workspaces.",
@@ -759,7 +760,7 @@ export const projects: Project[] = [
       },
       {
         id: "kradan-kanban-2",
-        src: "/images/projects/kradan-kanban/gallery/kradan-kanban-2.svg",
+        src: withBase("images/projects/kradan-kanban/gallery/kradan-kanban-2.svg"),
         isPlaceholder: true,
         alt: {
           en: "Task and workflow configuration covering task creation, assignment, status management, and customizable status colors.",
@@ -772,7 +773,7 @@ export const projects: Project[] = [
       },
       {
         id: "kradan-kanban-3",
-        src: "/images/projects/kradan-kanban/gallery/kradan-kanban-3.svg",
+        src: withBase("images/projects/kradan-kanban/gallery/kradan-kanban-3.svg"),
         isPlaceholder: true,
         alt: {
           en: "Task detail and user profile views displaying assignment information, status, timestamps, and account details.",
@@ -785,7 +786,7 @@ export const projects: Project[] = [
       },
       {
         id: "kradan-kanban-4",
-        src: "/images/projects/kradan-kanban/gallery/kradan-kanban-4.svg",
+        src: withBase("images/projects/kradan-kanban/gallery/kradan-kanban-4.svg"),
         isPlaceholder: true,
         alt: {
           en: "Board collaboration management for reviewing members and controlling access to a shared project board.",
@@ -798,7 +799,7 @@ export const projects: Project[] = [
       },
       {
         id: "kradan-kanban-5",
-        src: "/images/projects/kradan-kanban/gallery/kradan-kanban-5.svg",
+        src: withBase("images/projects/kradan-kanban/gallery/kradan-kanban-5.svg"),
         isPlaceholder: true,
         alt: {
           en: "Collaborator invitation flow with email validation and configurable read or write access permissions.",
@@ -822,7 +823,7 @@ export const projects: Project[] = [
       en: "LANDEKLEN is a year 2 academic team project creating a client-side virtual pet game. It simulates pet state reductions, level progress, responsive status loaders, and volume configurations. My contribution focused on the core play mechanisms, reactivity layout, and local client utilities.",
       th: "LANDEKLEN เป็นโปรเจกต์กลุ่มงานวิชาเรียนชั้นปีที่ 2 ในการสร้างเกมจำลองเลี้ยงสัตว์แบบเสมือนจริงฝั่งไคลเอนต์ ตัวเกมจำลองอัตราการลดสถานะของสัตว์เลี้ยง การเก็บเลเวลแถบแถบความคืบหน้า รวมถึงแผงควบคุมระดับเสียง ผลงานที่รับผิดชอบของผมเน้นไปที่กลไกการเล่นหลัก แผนผังความตอบสนอง และฟังก์ชันเสริมการเก็บข้อมูลลงเบราว์เซอร์",
     },
-    thumbnail: "/images/projects/landeklen-cover.svg",
+    thumbnail: withBase("images/projects/landeklen-cover.svg"),
     category: "additional",
     tags: ["Vue 3", "JavaScript", "HTML5", "CSS3", "Client-side"],
     role: {
