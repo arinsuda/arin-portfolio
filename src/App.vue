@@ -16,7 +16,7 @@
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-info">
-          <h4 class="footer-logo">Arin<span class="text-gradient">.S</span></h4>
+          <h4 class="footer-logo">Arin<span class="text-gradient">.Sudakijjathorn</span></h4>
           <p class="footer-description">
             Building robust backend architectures, clean API integrations, and developer tooling.
           </p>
