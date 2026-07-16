@@ -38,15 +38,40 @@
         <div class="about-visual" v-if="profile.profileImages && profile.profileImages.length > 0">
           <div class="glass-frame">
             <!-- Active Image Display -->
-            <div class="active-photo-wrapper">
-              <img 
-                :src="activeImage.src" 
-                :alt="locale === 'th' ? activeImage.alt.th : activeImage.alt.en" 
-                class="active-photo-img"
-              />
+            <div 
+              class="active-photo-wrapper"
+              @mouseenter="stopSlideshow"
+              @mouseleave="startSlideshow"
+            >
+              <transition name="fade" mode="out-in">
+                <img 
+                  :key="activeImage.id"
+                  :src="activeImage.src" 
+                  :alt="locale === 'th' ? activeImage.alt.th : activeImage.alt.en" 
+                  class="active-photo-img"
+                />
+              </transition>
               <div class="photo-caption" v-if="activeImage.caption">
                 <span class="caption-text">{{ locale === 'th' ? activeImage.caption.th : activeImage.caption.en }}</span>
               </div>
+
+              <!-- Navigation Arrows -->
+              <button 
+                class="nav-arrow prev" 
+                @click="prevImage" 
+                :aria-label="locale === 'th' ? 'รูปก่อนหน้า' : 'Previous image'"
+                v-if="profile.profileImages.length > 1"
+              >
+                <BaseIcon name="arrow-left" size="18" stroke-width="2" />
+              </button>
+              <button 
+                class="nav-arrow next" 
+                @click="nextImage" 
+                :aria-label="locale === 'th' ? 'รูปถัดไป' : 'Next image'"
+                v-if="profile.profileImages.length > 1"
+              >
+                <BaseIcon name="arrow-right" size="18" stroke-width="2" />
+              </button>
             </div>
 
             <!-- Thumbnail List (if > 1 image exists) -->
@@ -75,7 +100,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import BaseIcon from "../components/BaseIcon.vue";
 import { profile } from "../data/profile";
 import { useI18n } from "../i18n";
@@ -87,9 +112,48 @@ const { t, locale } = useI18n();
 const primaryImage = profile.profileImages.find(img => img.isPrimary) || profile.profileImages[0];
 const activeImage = ref<ProfileImage>(primaryImage);
 
+let intervalId: any = null;
+
+const startSlideshow = () => {
+  if (profile.profileImages.length <= 1) return;
+  stopSlideshow();
+  intervalId = setInterval(() => {
+    nextImage();
+  }, 4000); // Auto slide every 4 seconds
+};
+
+const stopSlideshow = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+};
+
+const nextImage = () => {
+  const currentIndex = profile.profileImages.findIndex(img => img.id === activeImage.value.id);
+  const nextIndex = (currentIndex + 1) % profile.profileImages.length;
+  activeImage.value = profile.profileImages[nextIndex];
+};
+
+const prevImage = () => {
+  const currentIndex = profile.profileImages.findIndex(img => img.id === activeImage.value.id);
+  const prevIndex = (currentIndex - 1 + profile.profileImages.length) % profile.profileImages.length;
+  activeImage.value = profile.profileImages[prevIndex];
+};
+
 const setActiveImage = (img: ProfileImage) => {
   activeImage.value = img;
+  // Restart slideshow on user interaction to reset the timer
+  startSlideshow();
 };
+
+onMounted(() => {
+  startSlideshow();
+});
+
+onUnmounted(() => {
+  stopSlideshow();
+});
 
 // Paragraph drafts
 const enText = {
@@ -245,6 +309,61 @@ const thText = {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(18, 20, 32, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 5;
+}
+
+.active-photo-wrapper:hover .nav-arrow {
+  opacity: 1;
+}
+
+.nav-arrow.prev {
+  left: 10px;
+}
+
+.nav-arrow.next {
+  right: 10px;
+}
+
+.nav-arrow:hover {
+  background: rgba(18, 20, 32, 0.85);
+  transform: translateY(-50%) scale(1.1);
+  color: var(--accent-cyan);
+}
+
+.nav-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Fade Transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--transition-normal);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 @media (max-width: 1024px) {

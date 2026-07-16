@@ -105,25 +105,51 @@ const { t, locale } = useI18n();
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  padding-left: 2rem;
-  border-left: 2px solid var(--border-color);
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 3rem;
+  padding-left: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 18px;
+  bottom: -4rem;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 182, 212, 0.4) 0%,
+    var(--border-color) 30%,
+    var(--border-color) 100%
+  );
+  transition: background-color var(--transition-normal);
+}
+
+.timeline-item:last-child::before {
+  display: none;
 }
 
 .timeline-dot {
   position: absolute;
-  left: calc(-2rem - 6px);
-  top: 6px;
-  width: 10px;
-  height: 10px;
+  left: 0;
+  top: 4px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--accent-cyan);
-  border: 2px solid var(--bg-primary);
-  box-shadow: 0 0 8px var(--accent-cyan);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 12px var(--accent-cyan);
+  z-index: 2;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.15);
+  box-shadow: 0 0 16px var(--accent-cyan), 0 0 4px var(--accent-cyan);
 }
 
 .timeline-title {

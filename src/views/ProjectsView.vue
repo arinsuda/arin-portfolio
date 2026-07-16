@@ -1,5 +1,5 @@
 <template>
-  <section class="projects-section">
+  <section class="projects-section textured-grid-secondary">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">{{ t.projects.title }}</h2>
