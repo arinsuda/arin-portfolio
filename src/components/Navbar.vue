@@ -7,7 +7,7 @@
 
       <!-- Desktop Navigation Menu -->
       <ul class="nav-menu" :class="{ active: isMobileMenuOpen }">
-        <li v-for="item in navItems" :key="item.label" class="nav-item">
+        <li v-for="item in navItems" :key="item.href" class="nav-item">
           <a
             v-if="isHomePage"
             :href="item.href"
@@ -28,15 +28,26 @@
       </ul>
 
       <div class="nav-actions">
+        <!-- Language Switcher -->
+        <button
+          class="lang-toggle"
+          @click="toggleLanguage"
+          :aria-label="locale === 'th' ? 'Switch to English' : 'สลับเป็นภาษาไทย'"
+          id="lang-toggler"
+        >
+          <BaseIcon name="language" size="18" class="lang-icon" />
+          <span class="lang-label-text">{{ locale === 'th' ? 'EN' : 'TH' }}</span>
+        </button>
+
         <!-- Light/Dark Mode Switcher -->
         <button
           class="theme-toggle"
           @click="toggleTheme"
-          aria-label="Toggle Theme Mode"
+          :aria-label="locale === 'th' ? 'สลับโหมดธีม' : 'Toggle Theme Mode'"
           id="theme-toggler"
         >
-          <BaseIcon v-if="isDarkTheme" name="sun" size="18" aria-label="Light mode" />
-          <BaseIcon v-else name="moon" size="18" aria-label="Dark mode" />
+          <BaseIcon v-if="isDarkTheme" name="sun" size="18" :aria-label="locale === 'th' ? 'โหมดสว่าง' : 'Light mode'" />
+          <BaseIcon v-else name="moon" size="18" :aria-label="locale === 'th' ? 'โหมดมืด' : 'Dark mode'" />
         </button>
 
         <!-- Mobile Hamburger Trigger -->
@@ -44,7 +55,7 @@
           class="mobile-toggle"
           :class="{ active: isMobileMenuOpen }"
           @click="isMobileMenuOpen = !isMobileMenuOpen"
-          aria-label="Toggle Navigation Menu"
+          :aria-label="locale === 'th' ? 'เปิด/ปิดเมนูนำทาง' : 'Toggle Navigation Menu'"
           id="hamburger-menu"
         >
           <span class="bar"></span>
@@ -60,20 +71,25 @@
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import BaseIcon from "./BaseIcon.vue";
+import { useI18n } from "../i18n";
 
 const route = useRoute();
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
 const isDarkTheme = ref(true);
 
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
-];
+const { t, locale, toggleLanguage } = useI18n();
+
+const navItems = computed(() => [
+  { label: t.value.nav.home, href: "#home" },
+  { label: t.value.nav.about, href: "#about" },
+  { label: t.value.nav.experience, href: "#experience" },
+  { label: t.value.nav.projects, href: "#projects" },
+  { label: t.value.nav.skills, href: "#skills" },
+  { label: t.value.nav.professionalSkills, href: "#professional-skills" },
+  { label: t.value.nav.education, href: "#education" },
+  { label: t.value.nav.contact, href: "#contact" },
+]);
 
 const isHomePage = computed(() => {
   return route.path === "/";
@@ -172,11 +188,11 @@ onUnmounted(() => {
 
 .nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .nav-link {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-secondary);
   position: relative;
@@ -205,7 +221,52 @@ onUnmounted(() => {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
+}
+
+.lang-toggle {
+  height: 40px;
+  padding: 0 0.85rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.light-theme .lang-toggle {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: scale(1.05);
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+}
+
+.light-theme .lang-toggle:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.lang-icon {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.lang-toggle:hover .lang-icon {
+  color: var(--accent-cyan);
+}
+
+.lang-label-text {
+  font-family: var(--font-sans);
 }
 
 .theme-toggle {
@@ -218,13 +279,23 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform var(--transition-fast), background var(--transition-fast);
+  color: var(--text-secondary);
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.light-theme .theme-toggle {
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .theme-toggle:hover {
   background: rgba(255, 255, 255, 0.06);
   transform: scale(1.05);
   border-color: var(--accent-cyan);
+  color: var(--text-primary);
+}
+
+.light-theme .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .mobile-toggle {
@@ -235,6 +306,9 @@ onUnmounted(() => {
   height: 21px;
   cursor: pointer;
   z-index: 1001;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .mobile-toggle .bar {
@@ -258,7 +332,16 @@ onUnmounted(() => {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+  .nav-menu {
+    gap: 1rem;
+  }
+  .nav-link {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 820px) {
   .mobile-toggle {
     display: flex;
   }
@@ -275,7 +358,7 @@ onUnmounted(() => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
     transition: right var(--transition-normal);
     z-index: 1000;
   }
@@ -285,7 +368,7 @@ onUnmounted(() => {
   }
 
   .nav-link {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 }
 </style>

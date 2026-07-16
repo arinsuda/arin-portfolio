@@ -18,17 +18,17 @@
         <div class="footer-info">
           <h4 class="footer-logo">Arin<span class="text-gradient">.Sudakijjathorn</span></h4>
           <p class="footer-description">
-            Building robust backend architectures, clean API integrations, and developer tooling.
+            {{ t.footer.bio }}
           </p>
         </div>
 
         <div class="footer-links">
-          <a :href="profile.socials.github" target="_blank" rel="noopener" class="footer-social-link">GitHub</a>
+          <a :href="profile.socials.github" target="_blank" rel="noopener noreferrer" class="footer-social-link">GitHub</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; {{ currentYear }} {{ profile.name }}. All rights reserved.</p>
-        <p class="footer-notes">Static Developer Portfolio built with Vue 3, TS, and Vite.</p>
+        <p>&copy; {{ currentYear }} {{ profile.name }}. {{ t.footer.rights }}</p>
+        <p class="footer-notes">{{ t.footer.notes }}</p>
       </div>
     </footer>
   </div>
@@ -37,7 +37,9 @@
 <script setup lang="ts">
 import Navbar from "./components/Navbar.vue";
 import { profile } from "./data/profile";
+import { useI18n } from "./i18n";
 
+const { t } = useI18n();
 const currentYear = new Date().getFullYear();
 </script>
 

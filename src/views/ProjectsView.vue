@@ -2,14 +2,14 @@
   <section class="projects-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Projects Showcase</h2>
-        <p class="section-subtitle">Verified software engineering projects spanning backend services, database schema design, and reactive clients.</p>
+        <h2 class="section-title">{{ t.projects.title }}</h2>
+        <p class="section-subtitle">{{ t.projects.subtitle }}</p>
       </div>
 
       <!-- Featured Projects Section -->
       <div class="projects-subsection-header">
-        <h3 class="subsection-title">Featured Projects</h3>
-        <p class="subsection-desc">Primary personal and capstone engineering achievements.</p>
+        <h3 class="subsection-title">{{ t.projects.featuredTitle }}</h3>
+        <p class="subsection-desc">{{ t.projects.featuredDesc }}</p>
       </div>
 
       <div class="projects-grid">
@@ -22,7 +22,7 @@
             <img :src="project.thumbnail" :alt="project.title" class="project-image" />
             <div class="media-overlay">
               <router-link :to="'/project/' + project.slug" class="btn btn-primary overlay-btn">
-                View Case Study
+                {{ t.projects.viewCaseStudy }}
               </router-link>
             </div>
           </div>
@@ -35,12 +35,12 @@
             </div>
             
             <h4 class="project-title">{{ project.title }}</h4>
-            <p class="project-description">{{ project.shortDescription }}</p>
+            <p class="project-description">{{ locale === 'th' ? project.shortDescription.th : project.shortDescription.en }}</p>
 
             <div class="card-footer">
-              <span class="project-role">{{ project.role }}</span>
+              <span class="project-role">{{ locale === 'th' ? project.role.th : project.role.en }}</span>
               <router-link :to="'/project/' + project.slug" class="details-link">
-                Details
+                {{ t.projects.details }}
                 <span class="arrow">
                   <BaseIcon name="arrow-right" size="14" />
                 </span>
@@ -52,8 +52,8 @@
 
       <!-- Additional Projects Section -->
       <div class="projects-subsection-header academic-header">
-        <h3 class="subsection-title">Additional Academic Projects</h3>
-        <p class="subsection-desc">Collaborative coursework and foundational web development projects.</p>
+        <h3 class="subsection-title">{{ t.projects.additionalTitle }}</h3>
+        <p class="subsection-desc">{{ t.projects.additionalDesc }}</p>
       </div>
 
       <div class="projects-grid additional-grid">
@@ -66,7 +66,7 @@
             <img :src="project.thumbnail" :alt="project.title" class="project-image" />
             <div class="media-overlay">
               <router-link :to="'/project/' + project.slug" class="btn btn-primary overlay-btn">
-                View Details
+                {{ t.projects.viewDetails }}
               </router-link>
             </div>
           </div>
@@ -79,12 +79,12 @@
             </div>
             
             <h4 class="project-title">{{ project.title }}</h4>
-            <p class="project-description">{{ project.shortDescription }}</p>
+            <p class="project-description">{{ locale === 'th' ? project.shortDescription.th : project.shortDescription.en }}</p>
 
             <div class="card-footer">
-              <span class="project-role">{{ project.role }}</span>
+              <span class="project-role">{{ locale === 'th' ? project.role.th : project.role.en }}</span>
               <router-link :to="'/project/' + project.slug" class="details-link">
-                Details
+                {{ t.projects.details }}
                 <span class="arrow">
                   <BaseIcon name="arrow-right" size="14" />
                 </span>
@@ -102,6 +102,9 @@
 import { computed } from "vue";
 import BaseIcon from "../components/BaseIcon.vue";
 import { projects } from "../data/projects";
+import { useI18n } from "../i18n";
+
+const { t, locale } = useI18n();
 
 const featuredProjects = computed(() => {
   return projects.filter(p => p.category === 'featured');
@@ -116,6 +119,7 @@ const additionalProjects = computed(() => {
 .projects-section {
   background-color: var(--bg-secondary);
   transition: background-color var(--transition-normal);
+  padding: 6rem 0;
 }
 
 .projects-subsection-header {

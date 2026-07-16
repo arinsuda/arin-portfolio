@@ -2,8 +2,8 @@
   <section class="skills-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Technical Skills</h2>
-        <p class="section-subtitle">Categorized breakdown of core proficiencies, project experience, and technical tools.</p>
+        <h2 class="section-title">{{ t.skills.title }}</h2>
+        <p class="section-subtitle">{{ t.skills.subtitle }}</p>
       </div>
 
       <div class="skills-layout">
@@ -16,10 +16,14 @@
         >
           <div class="category-header">
             <BaseIcon name="code" size="20" stroke-width="2.5" class="category-icon" />
-            <h3 class="category-title text-gradient">{{ cat.label }}</h3>
+            <h3 class="category-title text-gradient">
+              {{ locale === 'th' ? cat.label.th : cat.label.en }}
+            </h3>
           </div>
           
-          <p class="category-desc">{{ cat.description }}</p>
+          <p class="category-desc">
+            {{ locale === 'th' ? cat.description.th : cat.description.en }}
+          </p>
           
           <div class="skills-tags-container">
             <span 
@@ -39,9 +43,16 @@
 <script setup lang="ts">
 import BaseIcon from "../components/BaseIcon.vue";
 import { skillsData } from "../data/skills";
+import { useI18n } from "../i18n";
+
+const { t, locale } = useI18n();
 </script>
 
 <style scoped>
+.skills-section {
+  padding: 6rem 0;
+}
+
 .skills-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

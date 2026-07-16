@@ -3,8 +3,14 @@ import type { SkillCategory } from "../types";
 export const skillsData: SkillCategory[] = [
   {
     tier: "core",
-    label: "Core Verified Skills",
-    description: "Technologies where Arin has demonstrated hands-on engineering proficiency across backend development, database schemas, and system operations.",
+    label: {
+      en: "Core Verified Skills",
+      th: "ทักษะหลักที่ได้รับการรับรอง"
+    },
+    description: {
+      en: "Technologies where Arin has demonstrated hands-on engineering proficiency across backend development, database schemas, and system operations.",
+      th: "เทคโนโลยีที่อรินทร์ได้พิสูจน์ให้เห็นถึงความเชี่ยวชาญในเชิงปฏิบัติงานจริง ทั้งด้านการพัฒนาระบบ Backend การออกแบบฐานข้อมูล และระบบโครงสร้างพื้นฐาน"
+    },
     items: [
       "Go",
       "Java",
@@ -28,8 +34,14 @@ export const skillsData: SkillCategory[] = [
   },
   {
     tier: "project",
-    label: "Technologies Used in Projects",
-    description: "Frameworks, SDKs, and libraries integrated into projects to deliver specific functionalities.",
+    label: {
+      en: "Technologies Used in Projects",
+      th: "เทคโนโลยีที่เคยใช้งานในโปรเจกต์"
+    },
+    description: {
+      en: "Frameworks, SDKs, and libraries integrated into projects to deliver specific functionalities.",
+      th: "เฟรมเวิร์ก ไลบรารี และชุดพัฒนาซอฟต์แวร์ (SDK) ที่นำมารวมเข้ากับโปรเจกต์ต่างๆ เพื่อเพิ่มความสามารถเฉพาะด้าน"
+    },
     items: [
       "Dart",
       "Python",
@@ -58,8 +70,14 @@ export const skillsData: SkillCategory[] = [
   },
   {
     tier: "familiarity",
-    label: "Familiarity / Exposure",
-    description: "Additional tools and configuration libraries present in codebases or development processes.",
+    label: {
+      en: "Familiarity / Exposure",
+      th: "ความคุ้นเคยและประสบการณ์การใช้งาน"
+    },
+    description: {
+      en: "Additional tools and configuration libraries present in codebases or development processes.",
+      th: "เครื่องมือเพิ่มเติมและไลบรารีการกำหนดค่าที่มีอยู่ในโค้ดเบสหรือกระบวนการพัฒนาซอฟต์แวร์ต่างๆ"
+    },
     items: [
       "Radix-Vue",
       "DaisyUI",

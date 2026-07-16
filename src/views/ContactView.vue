@@ -2,28 +2,40 @@
   <section class="contact-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Let’s Build Reliable Systems</h2>
+        <h2 class="section-title">{{ t.contact.title }}</h2>
         <p class="section-subtitle">
-          I am open to Backend Developer and Full-Stack Developer opportunities. For job opportunities, project discussions, or technical collaboration, contact me by email or view my work on GitHub.
+          {{ t.contact.subtitle }}
         </p>
       </div>
 
       <div class="contact-layout glass-card">
         <div class="contact-info">
           <p class="contact-lead">
-            Whether you are looking to design robust database schemas, configure multi-service Docker deployments, or develop high-performance APIs in Go or Java, I am ready to collaborate.
+            {{ t.contact.lead }}
           </p>
         </div>
 
         <div class="contact-actions">
+          <!-- Send Email -->
           <a 
             :href="'mailto:' + profile.email" 
             class="btn btn-primary action-btn"
           >
             <BaseIcon name="mail" size="18" stroke-width="2" class="btn-icon" />
-            Send Email
+            {{ t.contact.sendEmail }}
+          </a>
+
+          <!-- Call Phone -->
+          <a 
+            :href="'tel:' + profile.phone.replace(/\s+/g, '')" 
+            class="btn btn-secondary action-btn"
+            :aria-label="locale === 'th' ? 'โทร ' + profile.phone : 'Call ' + profile.phone"
+          >
+            <BaseIcon name="phone" size="18" stroke-width="2" class="btn-icon" />
+            {{ t.contact.call }} ({{ profile.phone }})
           </a>
           
+          <!-- GitHub Profile -->
           <a 
             :href="profile.socials.github" 
             target="_blank" 
@@ -31,16 +43,17 @@
             class="btn btn-secondary action-btn"
           >
             <BaseIcon name="github" size="18" stroke-width="2" class="btn-icon" />
-            GitHub Profile
+            {{ t.contact.githubProfile }}
           </a>
 
+          <!-- Copy Email Button -->
           <button 
             @click="copyEmail" 
             class="btn btn-secondary action-btn"
             id="copy-email-btn"
           >
             <BaseIcon name="check" size="18" stroke-width="2" class="btn-icon" />
-            {{ copyStatus }}
+            {{ copyStatus === 'copy' ? t.contact.copyEmail : (copyStatus === 'copied' ? t.contact.emailCopied : t.contact.failedCopy) }}
           </button>
         </div>
       </div>
@@ -52,19 +65,22 @@
 import { ref } from "vue";
 import BaseIcon from "../components/BaseIcon.vue";
 import { profile } from "../data/profile";
+import { useI18n } from "../i18n";
 
-const copyStatus = ref("Copy Email");
+const { t, locale } = useI18n();
+
+const copyStatus = ref<"copy" | "copied" | "failed">("copy");
 
 const copyEmail = () => {
   navigator.clipboard.writeText(profile.email)
     .then(() => {
-      copyStatus.value = "Email Copied!";
+      copyStatus.value = "copied";
       setTimeout(() => {
-        copyStatus.value = "Copy Email";
+        copyStatus.value = "copy";
       }, 2000);
     })
     .catch(() => {
-      copyStatus.value = "Failed to copy";
+      copyStatus.value = "failed";
     });
 };
 </script>
@@ -75,7 +91,7 @@ const copyEmail = () => {
 }
 
 .contact-layout {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 3rem;
   display: flex;
@@ -86,7 +102,7 @@ const copyEmail = () => {
 }
 
 .contact-info {
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .contact-lead {
@@ -97,7 +113,7 @@ const copyEmail = () => {
 
 .contact-actions {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
@@ -107,15 +123,15 @@ const copyEmail = () => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 2rem;
-  min-width: 180px;
+  padding: 0.8rem 1.5rem;
+  min-width: 190px;
 }
 
 .btn-icon {
   margin-right: 0.5rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .contact-actions {
     flex-direction: column;
     align-items: center;
@@ -124,7 +140,7 @@ const copyEmail = () => {
   
   .action-btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
   }
 }
 </style>

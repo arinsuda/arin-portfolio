@@ -1,33 +1,53 @@
+export interface LocalizedString {
+  en: string;
+  th: string;
+}
+
 export interface SocialLinks {
   github: string;
   linkedin?: string;
 }
 
+export interface ProfileImage {
+  id: string;
+  src: string;
+  alt: LocalizedString;
+  caption?: LocalizedString;
+  isPrimary?: boolean;
+}
+
 export interface Profile {
   name: string;
-  title: string;
+  title: LocalizedString;
   avatar: string;
-  bio: string;
-  subBio: string;
+  profileImages: ProfileImage[];
+  bio: LocalizedString;
+  subBio: LocalizedString;
   email: string;
+  phone: string;
   socials: SocialLinks;
+  availability: {
+    enabled: boolean;
+    en: string;
+    th: string;
+  };
 }
 
 export interface ExperienceHighlight {
-  text: string;
+  text: LocalizedString;
 }
 
 export interface Experience {
   company: string;
-  role: string;
+  role: LocalizedString;
   position: string;
-  duration: string;
-  location: string;
-  description: string;
+  duration: LocalizedString;
+  location: LocalizedString;
+  description: LocalizedString;
   highlights: ExperienceHighlight[];
   technologies: string[];
   isConfidential: boolean;
-  confidentialityNote?: string;
+  confidentialityNote?: LocalizedString;
 }
 
 export type ProjectCategory = 'featured' | 'additional';
@@ -39,13 +59,13 @@ export type FeatureStatus =
   | 'planned';
 
 export interface ProjectFeature {
-  text: string;
+  text: LocalizedString;
   status?: FeatureStatus;
 }
 
 export interface ProjectContribution {
-  area: string;
-  details: string[];
+  area: LocalizedString;
+  details: LocalizedString[];
 }
 
 export type ProjectLinkType =
@@ -57,44 +77,61 @@ export type ProjectLinkType =
 
 export interface ProjectLink {
   type: ProjectLinkType;
-  label: string;
+  label: LocalizedString;
   url: string;
   isExternal: boolean;
-  ownershipNote?: string;
+  ownershipNote?: LocalizedString;
+}
+
+export interface ProjectGalleryImage {
+  id: string;
+  src: string;
+  isPlaceholder?: boolean;
+  alt: LocalizedString;
+  caption?: LocalizedString;
 }
 
 export interface Project {
   slug: string;
   title: string;
-  shortDescription: string;
-  description: string;
+  shortDescription: LocalizedString;
+  description: LocalizedString;
   thumbnail: string;
   category: ProjectCategory;
   tags: string[];
-  role: string;
-  ownership?: string;
-  period: string;
-  status: string;
+  role: LocalizedString;
+  ownership?: LocalizedString;
+  period: LocalizedString;
+  status: LocalizedString;
   contributions: ProjectContribution[];
   features: ProjectFeature[];
-  exclusions?: string[];
+  exclusions?: LocalizedString[];
   links: ProjectLink[];
   technologies: string[];
-  confidentialityNote?: string;
+  confidentialityNote?: LocalizedString;
+  gallery?: ProjectGalleryImage[];
 }
 
 export type SkillTier = 'core' | 'project' | 'familiarity';
 
 export interface SkillCategory {
   tier: SkillTier;
-  label: string;
-  description: string;
+  label: LocalizedString;
+  description: LocalizedString;
   items: string[];
 }
 
 export interface Education {
   institution: string;
-  degree: string;
-  duration: string;
-  activities: string[];
+  degree: LocalizedString;
+  duration: LocalizedString;
+  activities: LocalizedString[];
 }
+
+export interface SoftSkill {
+  id: string;
+  name: LocalizedString;
+  description: LocalizedString;
+  icon: any;
+}
+

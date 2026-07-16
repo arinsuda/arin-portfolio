@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="100%" height="100%">
+    <!-- Background Gradient -->
+    <defs>
+      <linearGradient id="grad-me-3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#111827" />
+        <stop offset="100%" stop-color="#030712" />
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="1500" fill="url(#grad-me-3)" />
+    
+    <!-- Abstract Geometric Art -->
+    <circle cx="600" cy="650" r="250" fill="none" stroke="#34d399" stroke-width="4" opacity="0.3" />
+    <circle cx="600" cy="650" r="180" fill="#34d399" opacity="0.1" />
+    <rect x="450" y="500" width="300" height="300" rx="40" fill="none" stroke="#34d399" stroke-width="2" transform="rotate(45 600 650)" opacity="0.2" />
+    
+    <!-- Silhouette / Monogram -->
+    <text x="600" y="700" font-family="'Inter', sans-serif" font-size="160" font-weight="800" fill="#34d399" text-anchor="middle" dominant-baseline="middle">AS</text>
+    
+    <!-- Labels -->
+    <text x="600" y="1100" font-family="'Inter', sans-serif" font-size="44" font-weight="600" fill="#ffffff" text-anchor="middle">Arin Sudakijjathorn</text>
+    <text x="600" y="1180" font-family="'Inter', sans-serif" font-size="32" font-weight="500" fill="#34d399" text-anchor="middle">Profile Photo Placeholder 3</text>
+    <text x="600" y="1240" font-family="'Inter', sans-serif" font-size="24" font-weight="400" fill="#94a3b8" text-anchor="middle">1200 x 1500 px (4:5)</text>
+  </svg>

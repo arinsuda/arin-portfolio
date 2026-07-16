@@ -8,13 +8,14 @@
 
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="greeting-badge">
+        <!-- Availability indicator -->
+        <div class="greeting-badge" v-if="profile.availability && profile.availability.enabled">
           <span class="pulse-dot"></span>
-          Available for new opportunities
+          {{ locale === 'th' ? profile.availability.th : profile.availability.en }}
         </div>
         
         <h1 class="hero-title">
-          Hi, I'm <span class="text-gradient">{{ profile.name }}</span>
+          {{ t.hero.greeting }} <span class="text-gradient">{{ profile.name }}</span>
         </h1>
         
         <h2 class="hero-subtitle">
@@ -22,34 +23,69 @@
         </h2>
         
         <p class="hero-lead">
-          {{ profile.bio }}
+          {{ locale === 'th' ? profile.bio.th : profile.bio.en }}
+        </p>
+
+        <!-- Profile Sub-Bio -->
+        <p class="hero-subbio">
+          {{ locale === 'th' ? profile.subBio.th : profile.subBio.en }}
         </p>
         
+        <!-- Action Buttons -->
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary" @click="scrollToSection($event, 'projects')">
-            View My Projects
+            {{ t.hero.viewProjects }}
             <span class="btn-arrow">
               <BaseIcon name="arrow-right" size="16" />
             </span>
           </a>
           <a href="#contact" class="btn btn-secondary" @click="scrollToSection($event, 'contact')">
-            Let's Talk
+            {{ t.hero.talk }}
+          </a>
+        </div>
+
+        <!-- Resume Actions -->
+        <div class="resume-actions-group">
+          <a 
+            href="/documents/Arin_Sudakijjathorn_Full_Stack_Developer_Resume.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="resume-btn"
+            :title="locale === 'th' ? 'ดูเรซูเม่ฉบับเต็ม' : 'View full resume'"
+          >
+            <BaseIcon name="file" size="16" class="resume-icon" />
+            <span>{{ locale === 'th' ? 'ดูเรซูเม่' : 'View Resume' }}</span>
+          </a>
+
+          <a 
+            href="/documents/Arin_Sudakijjathorn_Full_Stack_Developer_Resume.pdf" 
+            download="Arin_Sudakijjathorn_Full_Stack_Developer_Resume.pdf" 
+            class="resume-btn"
+            :title="locale === 'th' ? 'ดาวน์โหลดเรซูเม่ไฟล์ PDF' : 'Download resume PDF'"
+          >
+            <BaseIcon name="download" size="16" class="resume-icon" />
+            <span>{{ locale === 'th' ? 'ดาวน์โหลดเรซูเม่' : 'Download Resume' }}</span>
           </a>
         </div>
       </div>
 
+      <!-- Hero Avatar Frame -->
       <div class="hero-visual">
         <div class="glass-frame">
           <div class="avatar-wrapper">
-            <img :src="profile.avatar" :alt="profile.name" class="avatar-img" />
+            <img 
+              :src="profile.profileImages[0]?.src || profile.avatar" 
+              :alt="locale === 'th' ? (profile.profileImages[0]?.alt.th || profile.name) : (profile.profileImages[0]?.alt.en || profile.name)" 
+              class="avatar-img" 
+            />
           </div>
           <div class="visual-badge visual-badge-1">
             <BaseIcon name="zap" size="14" stroke-width="2.5" class="badge-icon" />
-            <span>Robust Architectures</span>
+            <span>{{ t.hero.robustArchitectures }}</span>
           </div>
           <div class="visual-badge visual-badge-2">
             <BaseIcon name="shield" size="14" stroke-width="2.5" class="badge-icon" />
-            <span>Type Safe APIs</span>
+            <span>{{ t.hero.typeSafeApis }}</span>
           </div>
         </div>
       </div>
@@ -58,9 +94,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 import BaseIcon from "../components/BaseIcon.vue";
 import { profile } from "../data/profile";
+import { useI18n } from "../i18n";
+
+const { t, locale } = useI18n();
 
 // Mouse spotlight tracking
 const mouseX = ref(0);
@@ -75,7 +114,12 @@ const handleMouseMove = (e: MouseEvent) => {
 };
 
 // Text typing simulation
-const words = ["Backend Developer", "Database Architect", "API Engineer"];
+const words = computed(() => {
+  return locale.value === "th"
+    ? ["นักพัฒนา Backend", "นักออกแบบฐานข้อมูล", "วิศวกร API"]
+    : ["Backend Developer", "Database Architect", "API Engineer"];
+});
+
 const displayText = ref("");
 const currentWordIndex = ref(0);
 const isDeleting = ref(false);
@@ -83,7 +127,8 @@ const typingSpeed = ref(100);
 let typingTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const typeText = () => {
-  const currentWord = words[currentWordIndex.value];
+  const currentWords = words.value;
+  const currentWord = currentWords[currentWordIndex.value] || "";
   const length = displayText.value.length;
 
   if (!isDeleting.value) {
@@ -103,7 +148,7 @@ const typeText = () => {
 
     if (displayText.value === "") {
       isDeleting.value = false;
-      currentWordIndex.value = (currentWordIndex.value + 1) % words.length;
+      currentWordIndex.value = (currentWordIndex.value + 1) % currentWords.length;
       typingSpeed.value = 500;
     }
   }
@@ -119,6 +164,14 @@ const scrollToSection = (event: Event, id: string) => {
     history.pushState(null, "", `#${id}`);
   }
 };
+
+watch(locale, () => {
+  if (typingTimeout) clearTimeout(typingTimeout);
+  displayText.value = "";
+  currentWordIndex.value = 0;
+  isDeleting.value = false;
+  typeText();
+});
 
 onMounted(() => {
   typeText();
@@ -182,7 +235,7 @@ onUnmounted(() => {
   padding: 0.5rem 1rem;
   border-radius: 30px;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 2rem;
 }
@@ -250,13 +303,23 @@ onUnmounted(() => {
 .hero-lead {
   font-size: 1.25rem;
   color: var(--text-secondary);
+  margin-bottom: 1rem;
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+.hero-subbio {
+  font-size: 1rem;
+  color: var(--text-muted);
   margin-bottom: 2.5rem;
-  max-width: 600px;
+  max-width: 650px;
+  line-height: 1.6;
 }
 
 .hero-actions {
   display: flex;
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .btn-arrow {
@@ -268,6 +331,39 @@ onUnmounted(() => {
 
 .btn-primary:hover .btn-arrow {
   transform: translateX(3px);
+}
+
+/* Resume actions group styling */
+.resume-actions-group {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.resume-btn:hover {
+  color: var(--accent-cyan);
+  transform: translateY(-1px);
+}
+
+.resume-icon {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.resume-btn:hover .resume-icon {
+  color: var(--accent-cyan);
 }
 
 /* Avatar Frame Visual */
@@ -302,6 +398,7 @@ onUnmounted(() => {
   overflow: hidden;
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
+  aspect-ratio: 1/1;
 }
 
 .avatar-img {
@@ -341,12 +438,25 @@ onUnmounted(() => {
   right: -2rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .hero-title {
-    font-size: 3rem;
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-container {
+    gap: 2rem;
+  }
+  .hero-title {
+    font-size: 2.8rem;
   }
   .hero-subtitle {
     font-size: 1.75rem;
+  }
+  .avatar-wrapper {
+    width: 280px;
+    height: 280px;
   }
 }
 
@@ -369,6 +479,11 @@ onUnmounted(() => {
     width: 100%;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .resume-actions-group {
+    justify-content: center;
+    width: 100%;
   }
 
   .btn {
