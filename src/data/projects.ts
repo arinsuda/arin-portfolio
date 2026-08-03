@@ -572,12 +572,12 @@ export const projects: Project[] = [
         src: withBase("images/projects/removy/gallery/removy-1.svg"),
         isPlaceholder: true,
         alt: {
-          en: "Authentication flows covering account registration and secure user login.",
-          th: "ขั้นตอน Authentication สำหรับการสมัครสมาชิกและเข้าสู่ระบบของผู้ใช้งาน",
+          en: "User authentication screens showing the login form and new account registration flow.",
+          th: "หน้าจอระบบยืนยันตัวตนแสดงฟอร์มเข้าสู่ระบบและขั้นตอนการสมัครสมาชิกใหม่",
         },
         caption: {
-          en: "User registration and login flows.",
-          th: "ขั้นตอนการสมัครสมาชิกและเข้าสู่ระบบ",
+          en: "Login and registration flows.",
+          th: "ขั้นตอนการเข้าสู่ระบบและการสมัครสมาชิก",
         },
       },
       {
@@ -585,12 +585,12 @@ export const projects: Project[] = [
         src: withBase("images/projects/removy/gallery/removy-2.svg"),
         isPlaceholder: true,
         alt: {
-          en: "Movie discovery experience featuring searchable catalogs, category filters, upcoming releases, and curated content sections.",
-          th: "ประสบการณ์ค้นพบภาพยนตร์ผ่านรายการหนัง ตัวกรองหมวดหมู่ หนังที่กำลังจะเข้าฉาย และคอนเทนต์แนะนำ",
+          en: "Movie browsing experience with searchable catalogs and movie detail view showing media information, trailers, ratings, and community reviews.",
+          th: "ประสบการณ์การเรียกดูภาพยนตร์พร้อมรายการค้นหา และหน้ารายละเอียดภาพยนตร์ที่แสดงข้อมูลสื่อ ตัวอย่างภาพยนตร์ คะแนน และรีวิวจากชุมชน",
         },
         caption: {
-          en: "Movie discovery, filtering, and upcoming releases.",
-          th: "การค้นหาภาพยนตร์ ตัวกรอง และหนังที่กำลังจะเข้าฉาย",
+          en: "Movie browsing and movie detail pages.",
+          th: "หน้าเรียกดูภาพยนตร์และหน้ารายละเอียดภาพยนตร์",
         },
       },
       {
@@ -598,12 +598,12 @@ export const projects: Project[] = [
         src: withBase("images/projects/removy/gallery/removy-3.svg"),
         isPlaceholder: true,
         alt: {
-          en: "Movie detail experience combining media information, trailers, personal library actions, ratings, and community reviews.",
-          th: "หน้ารายละเอียดภาพยนตร์ที่รวมข้อมูลหนัง ตัวอย่างภาพยนตร์ การจัดการคลังส่วนตัว การให้คะแนน และรีวิวจากผู้ใช้งาน",
+          en: "Upcoming movies section displaying scheduled releases and admin dashboard for managing platform content and data.",
+          th: "ส่วนภาพยนตร์ที่กำลังจะเข้าฉายแสดงกำหนดการเผยแพร่ และแดชบอร์ดผู้ดูแลระบบสำหรับจัดการเนื้อหาและข้อมูลแพลตฟอร์ม",
         },
         caption: {
-          en: "Movie details, trailers, ratings, and community reviews.",
-          th: "รายละเอียดหนัง ตัวอย่าง การให้คะแนน และรีวิวจากผู้ใช้งาน",
+          en: "Upcoming movies and admin dashboard.",
+          th: "ภาพยนตร์ที่กำลังจะเข้าฉายและแดชบอร์ดผู้ดูแลระบบ",
         },
       },
       {
@@ -611,12 +611,12 @@ export const projects: Project[] = [
         src: withBase("images/projects/removy/gallery/removy-4.svg"),
         isPlaceholder: true,
         alt: {
-          en: "Achievement system with unlock conditions, progress tracking, category filters, and completion status.",
-          th: "ระบบ Achievement ที่แสดงเงื่อนไขการปลดล็อก ความคืบหน้า ตัวกรองหมวดหมู่ และสถานะความสำเร็จ",
+          en: "Profile setup experience allowing users to configure their personal information, avatar, and account preferences.",
+          th: "ประสบการณ์การตั้งค่าโปรไฟล์ที่ให้ผู้ใช้กำหนดข้อมูลส่วนตัว รูปโปรไฟล์ และการตั้งค่าบัญชี",
         },
         caption: {
-          en: "Achievement progress, unlock conditions, and completion status.",
-          th: "ความคืบหน้า เงื่อนไขปลดล็อก และสถานะ Achievement",
+          en: "Profile setup and account configuration.",
+          th: "การตั้งค่าโปรไฟล์และการกำหนดค่าบัญชี",
         },
       },
       {
@@ -624,12 +624,12 @@ export const projects: Project[] = [
         src: withBase("images/projects/removy/gallery/removy-5.svg"),
         isPlaceholder: true,
         alt: {
-          en: "Global media search and profile management features, including account information and profile customization.",
-          th: "ฟีเจอร์ค้นหาสื่อและจัดการโปรไฟล์ รวมถึงข้อมูลบัญชีและการปรับแต่งโปรไฟล์ผู้ใช้งาน",
+          en: "User profile detail screens showcasing activity feed, achievement badges, personal media library, viewing other user profiles, and follow functionality.",
+          th: "หน้าจอรายละเอียดโปรไฟล์ผู้ใช้แสดงฟีดกิจกรรม เหรียญ Achievement คลังสื่อส่วนตัว การดูโปรไฟล์ผู้ใช้คนอื่น และฟังก์ชันการติดตาม",
         },
         caption: {
-          en: "Media search and user profile management.",
-          th: "การค้นหาสื่อและการจัดการโปรไฟล์ผู้ใช้งาน",
+          en: "Profile details with feed, achievements, library, and follow features.",
+          th: "รายละเอียดโปรไฟล์พร้อมฟีด Achievement คลังสื่อ และฟีเจอร์การติดตาม",
         },
       },
     ],
