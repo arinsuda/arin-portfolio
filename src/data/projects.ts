@@ -389,17 +389,17 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "remov",
-    title: "REMOV",
+    slug: "removy",
+    title: "REMOVY",
     shortDescription: {
       en: "A solo personal movie and TV community review discovery platform built with Vue 3, Go Fiber, and GORM.",
       th: "แพลตฟอร์มชุมชนรีวิวและค้นพบภาพยนตร์/ซีรีส์แบบเดี่ยว พัฒนาด้วย Vue 3, Go Fiber และ GORM",
     },
     description: {
-      en: "REMOV is a solo personal project designed as a community hub for movie and TV enthusiasts to publish media reviews, track personal libraries, and connect. The prototype utilizes a Go Fiber backend service alongside GORM, PostgreSQL, and MinIO object storage, with a Vue 3 Composition API client. It is under active, ongoing development.",
-      th: "REMOV เป็นโปรเจกต์ส่วนตัวที่ทำขึ้นคนเดียว ออกแบบมาเป็นศูนย์กลางชุมชนสำหรับผู้ชื่นชอบภาพยนตร์และรายการทีวีเพื่อแบ่งปันความคิดเห็น ติดตามรายการรับชม และสร้างปฏิสัมพันธ์ร่วมกัน ตัวระบบต้นแบบพัฒนาโดยใช้ Go Fiber และ GORM ในส่วนของ backend ร่วมกับ PostgreSQL และ MinIO ในขณะที่ฝั่งผู้ใช้งานพัฒนาด้วย Vue 3 Composition API ปัจจุบันระบบยังอยู่ภายใต้กระบวนการพัฒนาอย่างต่อเนื่อง",
+      en: "REMOVY is a solo personal project designed as a community hub for movie and TV enthusiasts to publish media reviews, track personal libraries, and connect. The prototype utilizes a Go Fiber backend service alongside GORM, PostgreSQL, and MinIO object storage, with a Vue 3 Composition API client. It is under active, ongoing development.",
+      th: "REMOVY เป็นโปรเจกต์ส่วนตัวที่ทำขึ้นคนเดียว ออกแบบมาเป็นศูนย์กลางชุมชนสำหรับผู้ชื่นชอบภาพยนตร์และรายการทีวีเพื่อแบ่งปันความคิดเห็น ติดตามรายการรับชม และสร้างปฏิสัมพันธ์ร่วมกัน ตัวระบบต้นแบบพัฒนาโดยใช้ Go Fiber และ GORM ในส่วนของ backend ร่วมกับ PostgreSQL และ MinIO ในขณะที่ฝั่งผู้ใช้งานพัฒนาด้วย Vue 3 Composition API ปัจจุบันระบบยังอยู่ภายใต้กระบวนการพัฒนาอย่างต่อเนื่อง",
     },
-    thumbnail: withBase("images/projects/remov-cover.svg"),
+    thumbnail: withBase("images/projects/removy-cover.svg"),
     category: "featured",
     tags: ["Vue 3", "Go", "PostgreSQL", "Vite", "REST API"],
     role: {
@@ -535,6 +535,15 @@ export const projects: Project[] = [
     ],
     links: [
       {
+        type: "live-demo",
+        label: {
+          en: "Play Demo",
+          th: "ทดลองใช้งาน (Play Demo)",
+        },
+        url: "https://removy-official.pages.dev/",
+        isExternal: true,
+      },
+      {
         type: "repository",
         label: {
           en: "View Repository",
@@ -559,8 +568,8 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        id: "remov-1",
-        src: withBase("images/projects/remov/gallery/remov-1.svg"),
+        id: "removy-1",
+        src: withBase("images/projects/removy/gallery/removy-1.svg"),
         isPlaceholder: true,
         alt: {
           en: "Authentication flows covering account registration and secure user login.",
@@ -572,8 +581,8 @@ export const projects: Project[] = [
         },
       },
       {
-        id: "remov-2",
-        src: withBase("images/projects/remov/gallery/remov-2.svg"),
+        id: "removy-2",
+        src: withBase("images/projects/removy/gallery/removy-2.svg"),
         isPlaceholder: true,
         alt: {
           en: "Movie discovery experience featuring searchable catalogs, category filters, upcoming releases, and curated content sections.",
@@ -585,8 +594,8 @@ export const projects: Project[] = [
         },
       },
       {
-        id: "remov-3",
-        src: withBase("images/projects/remov/gallery/remov-3.svg"),
+        id: "removy-3",
+        src: withBase("images/projects/removy/gallery/removy-3.svg"),
         isPlaceholder: true,
         alt: {
           en: "Movie detail experience combining media information, trailers, personal library actions, ratings, and community reviews.",
@@ -598,8 +607,8 @@ export const projects: Project[] = [
         },
       },
       {
-        id: "remov-4",
-        src: withBase("images/projects/remov/gallery/remov-4.svg"),
+        id: "removy-4",
+        src: withBase("images/projects/removy/gallery/removy-4.svg"),
         isPlaceholder: true,
         alt: {
           en: "Achievement system with unlock conditions, progress tracking, category filters, and completion status.",
@@ -611,8 +620,8 @@ export const projects: Project[] = [
         },
       },
       {
-        id: "remov-5",
-        src: withBase("images/projects/remov/gallery/remov-5.svg"),
+        id: "removy-5",
+        src: withBase("images/projects/removy/gallery/removy-5.svg"),
         isPlaceholder: true,
         alt: {
           en: "Global media search and profile management features, including account information and profile customization.",
