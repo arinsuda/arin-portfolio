@@ -462,9 +462,9 @@ const sidebarSocials = computed<SocialItem[]>(() => {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  color: var(--accent-emerald);
+  background: var(--accent-primary-bg);
+  border: 1px solid var(--accent-primary-border);
+  color: var(--accent-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -583,8 +583,8 @@ const sidebarSocials = computed<SocialItem[]>(() => {
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: var(--accent-primary-bg);
+  border: 1px solid var(--accent-primary-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -649,8 +649,8 @@ const sidebarSocials = computed<SocialItem[]>(() => {
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 30px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid var(--accent-emerald);
+  background: var(--accent-forest-bg);
+  border: 1px solid var(--accent-forest-border);
   font-size: 0.86rem;
 }
 
@@ -658,8 +658,8 @@ const sidebarSocials = computed<SocialItem[]>(() => {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--accent-emerald);
-  box-shadow: 0 0 10px var(--accent-glow);
+  background-color: var(--accent-secondary);
+  box-shadow: 0 0 10px var(--accent-secondary);
   animation: ping 1.8s infinite;
 }
 
@@ -669,7 +669,7 @@ const sidebarSocials = computed<SocialItem[]>(() => {
 }
 
 .current-name {
-  color: var(--accent-emerald);
+  color: var(--accent-secondary);
   font-weight: 700;
 }
 
@@ -715,8 +715,8 @@ const sidebarSocials = computed<SocialItem[]>(() => {
 }
 
 .is-active-destination .waypoint-node-badge {
-  border-color: var(--accent-emerald);
-  background: rgba(16, 185, 129, 0.1);
+  border-color: var(--accent-primary);
+  background: var(--accent-primary-bg);
   box-shadow: 0 0 20px var(--accent-glow);
 }
 
@@ -724,7 +724,7 @@ const sidebarSocials = computed<SocialItem[]>(() => {
   position: absolute;
   inset: -4px;
   border-radius: 18px;
-  border: 2px solid var(--accent-emerald);
+  border: 2px solid var(--accent-primary);
   opacity: 0.75;
   animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
   pointer-events: none;
@@ -797,12 +797,12 @@ const sidebarSocials = computed<SocialItem[]>(() => {
 }
 
 .is-active-destination .waypoint-card {
-  border-color: rgba(16, 185, 129, 0.4);
+  border-color: var(--accent-primary-border);
   box-shadow: 0 10px 30px -10px var(--accent-glow);
 }
 
 .is-active-destination .waypoint-card:hover {
-  border-color: var(--accent-emerald);
+  border-color: var(--accent-primary);
 }
 
 /* Waypoint Card Header */
@@ -818,7 +818,7 @@ const sidebarSocials = computed<SocialItem[]>(() => {
   height: 68px;
   border-radius: 14px;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--bg-secondary);
   padding: 0.45rem;
   border: 1px solid var(--border-color);
   flex-shrink: 0;
@@ -830,7 +830,7 @@ const sidebarSocials = computed<SocialItem[]>(() => {
 }
 
 .waypoint-logo-box:hover {
-  border-color: var(--accent-emerald);
+  border-color: var(--accent-primary);
   transform: scale(1.05);
 }
 
@@ -869,18 +869,18 @@ const sidebarSocials = computed<SocialItem[]>(() => {
 }
 
 .status-active-pill {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid var(--accent-emerald);
-  color: var(--accent-emerald);
+  background: var(--accent-forest-bg);
+  border: 1px solid var(--accent-forest-border);
+  color: var(--tag-success-text);
   font-weight: 700;
-  box-shadow: 0 0 10px var(--accent-glow);
+  box-shadow: 0 0 10px rgba(45, 106, 79, 0.2);
 }
 
 .beacon-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--accent-emerald);
+  background-color: var(--accent-secondary);
   animation: ping 1.8s infinite;
 }
 
@@ -1099,12 +1099,12 @@ const sidebarSocials = computed<SocialItem[]>(() => {
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: var(--accent-primary-bg);
+  border: 1px solid var(--accent-primary-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
 }
 
 .usage-cat-icon {

@@ -1,35 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap');
 
-/* --- Core Theme Tokens & Custom Properties (Zinc Palette) --- */
+/* --- Core Theme Tokens & Custom Properties (Dark Academia Tech / Bio-Industrial) --- */
 :root {
-  /* Default: Dark Theme (Clean zinc dark aesthetic like boatchrnthn.vercel.app) */
-  --bg-primary: #09090b;
-  --bg-secondary: #121215;
-  --bg-tertiary: #1b1b1f;
-  --bg-card: rgba(18, 18, 21, 0.75);
+  /* Default: Dark Academia Tech / Bio-Industrial Theme */
+  --bg-primary: #0F1110;       /* Deep moody charcoal with a faint earthy undertone */
+  --bg-secondary: #1B1E1C;     /* Subtle elevated dark slate */
+  --bg-tertiary: #252A26;      /* Elevated surface for tags, chips & code blocks */
+  --bg-card: rgba(27, 30, 28, 0.88);
   
-  --text-primary: #f4f4f5;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+  --text-primary: #EDECE8;     /* Soft warm ivory for high readability without harsh glare */
+  --text-secondary: #B5B8B0;   /* Warm light stone */
+  --text-muted: #8C9088;       /* Warm stone grey / metadata */
   
-  --border-color: #27272a;
-  --border-hover: #3f3f46;
+  --border-color: #2E332F;     /* Subtle raw iron/stone borders (1px) */
+  --border-hover: #4E554F;     /* Elevated iron border hover with warmth */
   
-  --accent-emerald: #10b981;
-  --accent-teal: #14b8a6;
-  --accent-cyan: #06b6d4;
-  --accent-blue: #3b82f6;
-  --accent-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
-  --accent-glow: rgba(16, 185, 129, 0.2);
+  /* Primary Accent: Warm amber glow from desk lamp */
+  --accent-primary: #E58A3C;
+  --accent-amber: #E58A3C;
+  --accent-amber-light: #F0A05A;
+  --accent-amber-dark: #B45309;
+  --accent-emerald: #E58A3C;   /* Unified alias so primary CTAs, links & headings get amber glow */
+  --accent-glow: rgba(229, 138, 60, 0.22);
+  --accent-gradient: linear-gradient(135deg, #E58A3C 0%, #F59E0B 50%, #D97706 100%);
+  --accent-primary-bg: rgba(229, 138, 60, 0.12);
+  --accent-primary-border: rgba(229, 138, 60, 0.28);
   
-  --glass-bg: rgba(18, 18, 21, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Secondary Accent: Muted deep foliage green (Badges, Skill Tags, Success) */
+  --accent-secondary: #3E6B48;
+  --accent-forest: #3E6B48;
+  --accent-forest-light: #528B5E;
+  --accent-forest-bg: rgba(62, 107, 72, 0.18);
+  --accent-forest-border: rgba(62, 107, 72, 0.4);
+  --tag-success-text: #8FD49E;
+  
+  /* Contribution Graph Scale (Dark) */
+  --contrib-l0: #252A26;
+  --contrib-l1: #603B1E;
+  --contrib-l2: #9A5826;
+  --contrib-l3: #D97706;
+  --contrib-l4: #E58A3C;
+  
+  --glass-bg: rgba(27, 30, 28, 0.88);
+  --glass-border: #2E332F;
   --glass-shadow: rgba(0, 0, 0, 0.5);
   
   /* Subtle Background Texture Tokens */
-  --bg-texture-grid: rgba(255, 255, 255, 0.018);
-  --bg-texture-dot: rgba(16, 185, 129, 0.1);
-  --bg-texture-dot-subtle: rgba(255, 255, 255, 0.03);
+  --bg-texture-grid: rgba(237, 236, 232, 0.02);
+  --bg-texture-dot: rgba(229, 138, 60, 0.1);
+  --bg-texture-dot-subtle: rgba(237, 236, 232, 0.03);
   
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', sans-serif;
@@ -39,48 +58,65 @@
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 20px 35px -10px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.18);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.45), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 35px -10px rgba(0, 0, 0, 0.65);
 
   color-scheme: dark;
   scroll-behavior: smooth;
 }
 
-/* Light Theme Overrides (High-Contrast & Clean Zinc Palette) */
+/* Light Theme Overrides (White & Warm Amber / Daylight Academia) */
 html.light-theme, body.light-theme {
-  --bg-primary: #ffffff;
-  --bg-secondary: #fafafa;
-  --bg-tertiary: #f4f4f5;
-  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-primary: #FAFAF9;       /* Stone-50 clean canvas with warm texture */
+  --bg-secondary: #FFFFFF;     /* Pure elevated white */
+  --bg-tertiary: #F5F5F4;      /* Stone-100 for tags, chips & code blocks */
+  --bg-card: rgba(255, 255, 255, 0.95);
   
-  --text-primary: #09090b;
-  --text-secondary: #3f3f46;
-  --text-muted: #71717a;
+  --text-primary: #1C1917;     /* Stone-900 high contrast without harsh glare */
+  --text-secondary: #44403C;   /* Stone-700 warm dark text */
+  --text-muted: #78716C;       /* Stone-500 metadata */
   
-  --border-color: #e4e4e7;
-  --border-hover: #d4d4d8;
+  --border-color: #E7E5E4;     /* Stone-200 clean 1px border */
+  --border-hover: #D6D3D1;     /* Stone-300 hover border */
   
-  --accent-emerald: #059669;
-  --accent-teal: #0d9488;
-  --accent-cyan: #0891b2;
-  --accent-blue: #2563eb;
-  --accent-gradient: linear-gradient(135deg, #059669 0%, #0891b2 50%, #2563eb 100%);
-  --accent-glow: rgba(5, 150, 105, 0.15);
+  --accent-primary: #D97706;   /* Amber-600 (WCAG AA 4.6:1 contrast against white) */
+  --accent-amber: #D97706;
+  --accent-amber-light: #F59E0B;
+  --accent-amber-dark: #B45309;
+  --accent-emerald: #D97706;   /* Unified alias so headings & buttons get amber */
+  --accent-glow: rgba(217, 119, 6, 0.16);
+  --accent-gradient: linear-gradient(135deg, #D97706 0%, #EA580C 50%, #B45309 100%);
+  --accent-primary-bg: rgba(217, 119, 6, 0.08);
+  --accent-primary-border: rgba(217, 119, 6, 0.25);
   
-  --glass-bg: rgba(255, 255, 255, 0.88);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --glass-shadow: rgba(0, 0, 0, 0.06);
+  --accent-secondary: #2D6A4F; /* Forest green (WCAG AA 5.2:1 contrast) */
+  --accent-forest: #2D6A4F;
+  --accent-forest-light: #40916C;
+  --accent-forest-bg: rgba(45, 106, 79, 0.10);
+  --accent-forest-border: rgba(45, 106, 79, 0.28);
+  --tag-success-text: #1E4D2B;
   
-  --bg-texture-grid: rgba(0, 0, 0, 0.025);
-  --bg-texture-dot: rgba(5, 150, 105, 0.07);
-  --bg-texture-dot-subtle: rgba(0, 0, 0, 0.02);
+  /* Contribution Graph Scale (Light White & Amber) */
+  --contrib-l0: #E7E5E4;       /* Stone-200 empty cell */
+  --contrib-l1: #FED7AA;       /* Amber-200 subtle warm glow */
+  --contrib-l2: #FDBA74;       /* Amber-300 medium warm amber */
+  --contrib-l3: #F97316;       /* Orange-500 active */
+  --contrib-l4: #C2410C;       /* Orange-700 peak activity */
   
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 35px -10px rgba(0, 0, 0, 0.09);
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: #E7E5E4;
+  --glass-shadow: rgba(28, 25, 23, 0.06);
+  
+  --bg-texture-grid: rgba(28, 25, 23, 0.03);
+  --bg-texture-dot: rgba(217, 119, 6, 0.1);
+  --bg-texture-dot-subtle: rgba(28, 25, 23, 0.02);
+  
+  --shadow-sm: 0 1px 2px 0 rgba(28, 25, 23, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(28, 25, 23, 0.07), 0 2px 4px -1px rgba(28, 25, 23, 0.04);
+  --shadow-lg: 0 10px 25px -5px rgba(28, 25, 23, 0.08), 0 8px 10px -6px rgba(28, 25, 23, 0.04);
+  --shadow-xl: 0 20px 35px -10px rgba(28, 25, 23, 0.12);
 
   color-scheme: light;
 }
@@ -272,6 +308,20 @@ section {
   background: var(--bg-tertiary) !important;
 }
 
+.p-button.p-button-primary {
+  background: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
+  color: #0F1110 !important;
+  font-weight: 700 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.p-button.p-button-primary:hover {
+  background: var(--accent-amber-light) !important;
+  border-color: var(--accent-amber-light) !important;
+  box-shadow: 0 0 16px var(--accent-glow) !important;
+}
+
 /* Tags & Chips */
 .p-tag {
   font-family: var(--font-mono) !important;
@@ -288,13 +338,49 @@ section {
   border: 1px solid var(--border-color) !important;
 }
 
+.p-tag.p-tag-secondary:hover {
+  border-color: var(--border-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+.p-tag.p-tag-success,
+.p-tag.p-tag-info {
+  background: var(--accent-forest-bg) !important;
+  color: var(--tag-success-text) !important;
+  border: 1px solid var(--accent-forest-border) !important;
+}
+
+.p-tag.p-tag-warn {
+  background: var(--accent-primary-bg) !important;
+  color: var(--accent-primary) !important;
+  border: 1px solid var(--accent-primary-border) !important;
+}
+
+.text-emerald,
+.text-accent {
+  color: var(--accent-primary) !important;
+}
+
 .p-chip {
   font-family: var(--font-mono) !important;
   font-size: 0.8rem !important;
-  border-radius: 20px !important;
+  border-radius: 6px !important;
   background: var(--bg-tertiary) !important;
   color: var(--text-secondary) !important;
   border: 1px solid var(--border-color) !important;
+}
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+}
+
+code {
+  font-size: 0.86em;
+  background-color: var(--bg-tertiary);
+  color: var(--accent-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
 }
 
 .p-timeline-event-opposite {

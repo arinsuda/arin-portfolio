@@ -587,7 +587,7 @@ onUnmounted(() => {
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  background-color: var(--accent-emerald);
+  background-color: var(--accent-secondary);
   opacity: 0.75;
   animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
@@ -598,7 +598,7 @@ onUnmounted(() => {
   border-radius: 50%;
   height: 8px;
   width: 8px;
-  background-color: var(--accent-emerald);
+  background-color: var(--accent-secondary);
 }
 
 @keyframes ping {
@@ -643,13 +643,13 @@ onUnmounted(() => {
 }
 
 .typed-text {
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
   font-family: var(--font-mono);
   font-weight: 600;
 }
 
 .typing-cursor {
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
   animation: blink 0.9s infinite;
 }
 
@@ -694,9 +694,10 @@ onUnmounted(() => {
 }
 
 .primary-cta {
-  background: var(--accent-emerald) !important;
-  border-color: var(--accent-emerald) !important;
-  color: #ffffff !important;
+  background: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
+  color: #0F1110 !important;
+  font-weight: 700 !important;
   box-shadow: 0 4px 14px var(--accent-glow) !important;
 }
 
@@ -744,8 +745,8 @@ onUnmounted(() => {
 }
 
 .social-icon-link:hover {
-  color: var(--accent-emerald);
-  border-color: var(--accent-emerald);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
@@ -906,7 +907,7 @@ onUnmounted(() => {
 
 .case-study-btn {
   padding: 0 !important;
-  color: var(--accent-emerald) !important;
+  color: var(--accent-primary) !important;
   font-weight: 600 !important;
   font-size: 0.85rem !important;
   text-decoration: none;
@@ -973,17 +974,17 @@ onUnmounted(() => {
 }
 
 .is-current-active .step-marker {
-  background: rgba(16, 185, 129, 0.15);
-  border-color: #10b981;
-  color: #10b981;
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+  background: rgba(229, 138, 60, 0.15);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  box-shadow: 0 0 16px var(--accent-glow);
 }
 
 .marker-radar {
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 2px solid #10b981;
+  border: 2px solid var(--accent-primary);
   animation: marker-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
@@ -993,7 +994,7 @@ onUnmounted(() => {
 }
 
 .is-current-active .marker-icon {
-  color: #10b981;
+  color: var(--accent-primary);
 }
 
 .step-meta {
@@ -1010,7 +1011,7 @@ onUnmounted(() => {
 }
 
 .is-current-active .step-code {
-  color: #10b981;
+  color: var(--accent-primary);
 }
 
 .step-name {
@@ -1025,7 +1026,7 @@ onUnmounted(() => {
 }
 
 .is-current-active .step-status {
-  color: #10b981;
+  color: var(--accent-primary);
   font-weight: 600;
 }
 
@@ -1046,9 +1047,9 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #10b981;
+  background: var(--accent-forest-bg);
+  border: 1px solid var(--accent-forest-border);
+  color: #8FD49E;
   padding: 0.2rem 0.65rem;
   border-radius: 9999px;
   font-size: 0.72rem;
@@ -1060,8 +1061,8 @@ onUnmounted(() => {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 6px #10b981;
+  background: var(--accent-secondary);
+  box-shadow: 0 0 6px #528B5E;
   animation: beacon-blink 1.5s ease-in-out infinite alternate;
 }
 
@@ -1134,7 +1135,7 @@ onUnmounted(() => {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
 }
 
 .exp-loc {
@@ -1165,7 +1166,7 @@ onUnmounted(() => {
 
 .learn-more-btn {
   padding: 0 !important;
-  color: var(--accent-emerald) !important;
+  color: var(--accent-primary) !important;
   font-weight: 600 !important;
   font-size: 0.9rem !important;
   text-decoration: none;
@@ -1240,8 +1241,8 @@ onUnmounted(() => {
 }
 
 .contact-social-icon-btn:hover {
-  border-color: var(--accent-emerald);
-  color: var(--accent-emerald);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px var(--accent-glow);
 }

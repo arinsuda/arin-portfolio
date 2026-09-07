@@ -172,7 +172,7 @@ const footerSocials = computed<FooterSocialItem[]>(() => {
 }
 
 .logo-accent {
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
   margin-left: 1px;
 }
 

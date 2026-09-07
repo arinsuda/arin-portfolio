@@ -151,7 +151,6 @@ const filteredProjects = computed(() => {
 <style scoped>
 .projects-section {
   position: relative;
-  background-color: var(--bg-secondary);
   padding-top: calc(76px + 2.5rem);
   padding-bottom: 6rem;
   min-height: 100vh;
@@ -168,7 +167,7 @@ const filteredProjects = computed(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   padding: 0.35rem;
   border-radius: 40px;
@@ -196,7 +195,7 @@ const filteredProjects = computed(() => {
 }
 
 .filter-pill-btn.active {
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   box-shadow: var(--shadow-sm);
@@ -204,7 +203,7 @@ const filteredProjects = computed(() => {
 
 .pill-icon {
   font-size: 0.85rem;
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
 }
 
 .pill-count {
@@ -278,9 +277,10 @@ const filteredProjects = computed(() => {
 }
 
 .overlay-cta {
-  background: var(--accent-emerald) !important;
-  border-color: var(--accent-emerald) !important;
-  font-weight: 600 !important;
+  background: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
+  color: #0F1110 !important;
+  font-weight: 700 !important;
   border-radius: 8px !important;
   gap: 0.4rem;
 }
@@ -318,7 +318,7 @@ const filteredProjects = computed(() => {
 }
 
 .title-link:hover {
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
 }
 
 .project-role-badge {
@@ -326,7 +326,7 @@ const filteredProjects = computed(() => {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.82rem;
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
   font-weight: 500;
   margin-bottom: 0.85rem;
 }
@@ -367,7 +367,7 @@ const filteredProjects = computed(() => {
 }
 
 .details-btn:hover {
-  color: var(--accent-emerald) !important;
+  color: var(--accent-primary) !important;
 }
 
 @media (max-width: 900px) {

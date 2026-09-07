@@ -112,11 +112,11 @@ const getTierLabel = (tier: string) => {
 
 /* Highlight Core Category */
 .tier-core {
-  border-color: rgba(16, 185, 129, 0.3) !important;
+  border-color: var(--accent-primary-border) !important;
 }
 
 .tier-core:hover {
-  border-color: var(--accent-emerald) !important;
+  border-color: var(--accent-primary) !important;
   box-shadow: 0 10px 30px -10px var(--accent-glow) !important;
 }
 
@@ -137,14 +137,14 @@ const getTierLabel = (tier: string) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
   font-size: 1.15rem;
   flex-shrink: 0;
 }
 
 .tier-core .header-icon-box {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.25);
+  background: var(--accent-primary-bg);
+  border-color: var(--accent-primary-border);
 }
 
 .header-text {
@@ -191,7 +191,7 @@ const getTierLabel = (tier: string) => {
 }
 
 .skill-chip:hover {
-  border-color: var(--accent-emerald) !important;
+  border-color: var(--accent-primary) !important;
   color: var(--text-primary) !important;
 }
 

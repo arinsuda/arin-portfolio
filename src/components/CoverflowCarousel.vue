@@ -369,7 +369,7 @@ const onMouseLeave = () => {
 }
 
 .coverflow-wrapper:focus-visible {
-  outline: 2px solid var(--accent-emerald);
+  outline: 2px solid var(--accent-primary);
   outline-offset: 4px;
   border-radius: 1.25rem;
 }
@@ -399,7 +399,7 @@ const onMouseLeave = () => {
 
 .badge-icon {
   font-size: 0.75rem;
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
 }
 
 .swipe-hint {
@@ -451,11 +451,7 @@ const onMouseLeave = () => {
     filter 0.42s ease;
   transform-style: preserve-3d;
   will-change: transform, opacity, filter;
-  -webkit-box-reflect: below 6px linear-gradient(to bottom, transparent 65%, rgba(0, 0, 0, 0.22));
-}
-
-:global(.light-theme) .coverflow-card {
-  -webkit-box-reflect: below 6px linear-gradient(to bottom, transparent 75%, rgba(0, 0, 0, 0.08));
+  -webkit-box-reflect: below 6px linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.12));
 }
 
 .card-inner {
@@ -466,17 +462,13 @@ const onMouseLeave = () => {
   overflow: hidden;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-lg);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-:global(.light-theme) .card-inner {
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
-}
-
 .coverflow-card.is-active .card-inner {
-  border-color: var(--accent-emerald);
-  box-shadow: 0 16px 36px -8px var(--accent-glow), 0 0 0 1px rgba(16, 185, 129, 0.3);
+  border-color: var(--accent-primary);
+  box-shadow: 0 16px 36px -8px var(--accent-glow), 0 0 0 1px var(--accent-primary-border);
 }
 
 .card-image {
@@ -502,37 +494,25 @@ const onMouseLeave = () => {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(9, 9, 11, 0.72);
+  background: var(--bg-card);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
   cursor: pointer;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: all var(--transition-fast);
   z-index: 5;
-}
-
-:global(.light-theme) .card-action-btn {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(0, 0, 0, 0.12);
-  color: #18181b;
 }
 
 .card-action-btn:hover {
   opacity: 1;
   transform: scale(1.1);
-  background: var(--accent-emerald);
-  border-color: var(--accent-emerald);
-  color: #ffffff;
-}
-
-:global(.light-theme) .card-action-btn:hover {
-  background: var(--accent-emerald);
-  border-color: var(--accent-emerald);
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
   color: #ffffff;
 }
 
@@ -563,8 +543,8 @@ const onMouseLeave = () => {
 }
 
 .nav-arrow-btn:hover:not(:disabled) {
-  border-color: var(--accent-emerald);
-  color: var(--accent-emerald);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
   transform: scale(1.08);
 }
 
@@ -596,7 +576,7 @@ const onMouseLeave = () => {
 
 .dot-pill.active {
   width: 22px;
-  background: var(--accent-emerald);
+  background: var(--accent-primary);
   box-shadow: 0 0 8px var(--accent-glow);
 }
 
@@ -643,8 +623,8 @@ const onMouseLeave = () => {
 }
 
 .lightbox-close-btn:hover {
-  background: var(--accent-emerald);
-  border-color: var(--accent-emerald);
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
   transform: rotate(90deg);
 }
 
@@ -687,8 +667,8 @@ const onMouseLeave = () => {
 }
 
 .lightbox-nav-btn:hover:not(:disabled) {
-  background: var(--accent-emerald);
-  border-color: var(--accent-emerald);
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
 }
 
 .lightbox-nav-btn:disabled {

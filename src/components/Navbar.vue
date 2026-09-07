@@ -249,7 +249,7 @@ onUnmounted(() => {
 }
 
 .logo-link:hover .logo-box {
-  border-color: var(--accent-emerald);
+  border-color: var(--accent-primary);
   transform: scale(1.04);
 }
 
@@ -261,7 +261,7 @@ onUnmounted(() => {
 }
 
 .logo-dot {
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
 }
 
 /* Desktop Navigation */
@@ -290,7 +290,7 @@ onUnmounted(() => {
 }
 
 .nav-link-active {
-  color: var(--accent-emerald) !important;
+  color: var(--accent-primary) !important;
   font-weight: 700 !important;
 }
 
@@ -301,7 +301,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--accent-emerald);
+  background-color: var(--accent-primary);
   border-radius: 2px;
 }
 
@@ -390,15 +390,15 @@ onUnmounted(() => {
 }
 
 .drawer-nav-link.nav-link-active {
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
   background: var(--bg-tertiary);
-  border-color: rgba(16, 185, 129, 0.25);
+  border-color: var(--accent-primary-border);
   font-weight: 600;
 }
 
 .drawer-nav-icon {
   font-size: 1.1rem;
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
 }
 
 .drawer-footer {

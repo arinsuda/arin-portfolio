@@ -214,8 +214,8 @@ const copyEmailToClipboard = () => {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: var(--accent-primary-bg);
+  border: 1px solid var(--accent-primary-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,7 +223,7 @@ const copyEmailToClipboard = () => {
 }
 
 .text-emerald {
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
 }
 
 .contact-heading {

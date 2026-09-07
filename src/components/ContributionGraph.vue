@@ -334,28 +334,18 @@ onMounted(async () => {
   font-size: 2.1rem;
   font-weight: 800;
   letter-spacing: -0.025em;
-  color: #ffffff;
-}
-
-:global(.light-theme) .graph-title {
-  color: #18181b;
+  color: var(--text-primary);
 }
 
 .graph-card {
-  background-color: rgba(24, 24, 27, 0.65);
+  background-color: var(--bg-card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(63, 63, 70, 0.4);
+  border: 1px solid var(--border-color);
   border-radius: 1rem;
   padding: 1.75rem 2rem;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.3s ease;
-}
-
-:global(.light-theme) .graph-card {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-color: #e4e4e7;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-lg);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .graph-inner-layout {
@@ -377,7 +367,7 @@ onMounted(async () => {
   padding-bottom: 0.75rem;
   /* subtle scrollbar */
   scrollbar-width: thin;
-  scrollbar-color: rgba(63, 63, 70, 0.4) transparent;
+  scrollbar-color: var(--border-color) transparent;
 }
 
 .heatmap-scroll-container::-webkit-scrollbar {
@@ -385,7 +375,7 @@ onMounted(async () => {
 }
 
 .heatmap-scroll-container::-webkit-scrollbar-thumb {
-  background: rgba(63, 63, 70, 0.4);
+  background: var(--border-color);
   border-radius: 3px;
 }
 
@@ -407,14 +397,10 @@ onMounted(async () => {
 
 .month-label {
   font-size: 0.75rem;
-  color: #a1a1aa;
+  color: var(--text-muted);
   font-weight: 500;
   white-space: nowrap;
   grid-row: 1;
-}
-
-:global(.light-theme) .month-label {
-  color: #71717a;
 }
 
 /* Grid of Weeks */
@@ -454,47 +440,26 @@ onMounted(async () => {
   pointer-events: none;
 }
 
-/* Contribution Colors (matching GitHub Emerald Aesthetic) */
+/* Contribution Colors (Tokenized Scale via CSS variables) */
 .level-0 {
-  background-color: #18181b;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-:global(.light-theme) .level-0 {
-  background-color: #ebedf0;
-  border-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--contrib-l0);
+  border: 1px solid var(--border-color);
 }
 
 .level-1 {
-  background-color: #0e4429;
-}
-
-:global(.light-theme) .level-1 {
-  background-color: #9be9a8;
+  background-color: var(--contrib-l1);
 }
 
 .level-2 {
-  background-color: #006d32;
-}
-
-:global(.light-theme) .level-2 {
-  background-color: #40c463;
+  background-color: var(--contrib-l2);
 }
 
 .level-3 {
-  background-color: #26a641;
-}
-
-:global(.light-theme) .level-3 {
-  background-color: #30a14e;
+  background-color: var(--contrib-l3);
 }
 
 .level-4 {
-  background-color: #39d353;
-}
-
-:global(.light-theme) .level-4 {
-  background-color: #216e39;
+  background-color: var(--contrib-l4);
 }
 
 /* Footer (Summary & Legend) */
@@ -510,21 +475,13 @@ onMounted(async () => {
 
 .graph-summary {
   font-size: 0.85rem;
-  color: #a1a1aa;
-}
-
-:global(.light-theme) .graph-summary {
-  color: #71717a;
+  color: var(--text-muted);
 }
 
 .summary-count {
   font-weight: 700;
-  color: #f4f4f5;
+  color: var(--text-primary);
   margin-right: 0.25rem;
-}
-
-:global(.light-theme) .summary-count {
-  color: #18181b;
 }
 
 .graph-legend {
@@ -535,7 +492,7 @@ onMounted(async () => {
 
 .legend-text {
   font-size: 0.75rem;
-  color: #71717a;
+  color: var(--text-muted);
   margin: 0 4px;
 }
 
@@ -560,49 +517,34 @@ onMounted(async () => {
   padding: 0.45rem 1rem;
   border-radius: 0.5rem;
   background: transparent;
-  color: #a1a1aa;
+  color: var(--text-muted);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   text-align: center;
 }
 
-:global(.light-theme) .year-btn {
-  color: #71717a;
-}
-
 .year-btn:hover {
-  color: #f4f4f5;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-:global(.light-theme) .year-btn:hover {
-  color: #18181b;
-  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
 }
 
 .year-btn.active {
-  background-color: #34d399;
-  color: #09090b;
+  background-color: var(--accent-primary);
+  color: #0F1110;
   font-weight: 800;
-  border-color: #34d399;
-  box-shadow: 0 2px 10px rgba(52, 211, 153, 0.25);
-}
-
-:global(.light-theme) .year-btn.active {
-  background-color: #10b981;
-  color: #ffffff;
-  border-color: #10b981;
+  border-color: var(--accent-primary);
+  box-shadow: 0 2px 10px var(--accent-glow);
 }
 
 /* Floating Tooltip */
 .custom-tooltip {
   position: fixed;
   transform: translate(-50%, -100%);
-  background-color: #09090b;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
   padding: 0.4rem 0.65rem;
   border-radius: 6px;
   font-size: 0.75rem;
@@ -611,13 +553,8 @@ onMounted(async () => {
   white-space: nowrap;
 }
 
-:global(.light-theme) .custom-tooltip {
-  background-color: #18181b;
-  color: #ffffff;
-}
-
 .tooltip-text strong {
-  color: #34d399;
+  color: var(--accent-primary);
 }
 
 @media (max-width: 860px) {

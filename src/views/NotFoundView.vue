@@ -197,9 +197,9 @@ const statusIcon = computed(() => {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent-emerald);
-  background: var(--accent-glow);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--accent-primary);
+  background: var(--accent-primary-bg);
+  border: 1px solid var(--accent-primary-border);
   border-radius: 9999px;
 }
 

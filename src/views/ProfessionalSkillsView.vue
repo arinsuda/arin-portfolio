@@ -92,12 +92,12 @@ const getSkillPrimeIcon = (id: string) => {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  background: var(--accent-primary-bg);
+  border: 1px solid var(--accent-primary-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-emerald);
+  color: var(--accent-primary);
   font-size: 1.15rem;
   flex-shrink: 0;
 }
