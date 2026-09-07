@@ -30,8 +30,8 @@ export const aboutStory: AboutStoryItem[] = [
     id: "intro",
     icon: "pi pi-user",
     text: {
-      en: "Hello, my name is Arin Sudakijjathorn. I graduated in Information Technology from King Mongkut’s University of Technology Thonburi (KMUTT), with a strong focus on backend architecture, API engineering, and relational database systems.",
-      th: "สวัสดีครับ ผมชื่อ อรินทร์ สุดากิจจาทร สำเร็จการศึกษาด้านเทคโนโลยีสารสนเทศจาก มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (KMUTT) โดยมีความเชี่ยวชาญและมุ่งเน้นการพัฒนาระบบ Backend, การออกแบบ API และระบบฐานข้อมูลเชิงสัมพันธ์",
+      en: "Hello, my name is Arin Sudakijjathorn. I studied Information Technology (IT) at the School of Information Technology (SIT), King Mongkut’s University of Technology Thonburi (KMUTT), with a strong dedication to backend architectures, relational databases, and scalable web services.",
+      th: "สวัสดีครับ ผมชื่อ อรินทร์ สุดากิจจาทร สำเร็จการศึกษาด้านเทคโนโลยีสารสนเทศ (IT) จากคณะเทคโนโลยีสารสนเทศ (SIT) มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (KMUTT) โดยมุ่งมั่นและเชี่ยวชาญด้านสถาปัตยกรรม Backend, ระบบฐานข้อมูลเชิงสัมพันธ์ และการพัฒนาระบบที่มีประสิทธิภาพสูง",
     },
   },
   {
@@ -40,6 +40,14 @@ export const aboutStory: AboutStoryItem[] = [
     text: {
       en: "During my software engineering internship at Stream I.T. Consulting, I contributed to enterprise web applications, building and refactoring RESTful services, implementing database migrations, and collaborating within an Agile team to deliver reliable software components.",
       th: "ในช่วงฝึกงานตำแหน่ง Software Engineer ที่ Stream I.T. Consulting ผมได้ร่วมพัฒนาและดูแลระบบซอฟต์แวร์ระดับองค์กร สร้างและปรับปรุง RESTful API, จัดการ Database Migration และทำงานร่วมกับทีมในรูปแบบ Agile เพื่อส่งมอบงานที่มีคุณภาพและเสถียรภาพสูง",
+    },
+  },
+  {
+    id: "current",
+    icon: "pi pi-desktop",
+    text: {
+      en: "Currently, I work as a Programmer at LPN Plate Mill Public Co., Ltd., focusing primarily on MySQL Server to write, design, and maintain internal business systems and database operations.",
+      th: "ปัจจุบัน ผมทำงานในตำแหน่งโปรแกรมเมอร์ (Programmer) ที่บริษัท แอล พี เอ็น เพลทมิล จำกัด (มหาชน) โดยหลักๆ ใช้ MySQL Server ในการเขียน ออกแบบ และดูแลปรับปรุงระบบต่างๆ ภายในองค์กร",
     },
   },
   {

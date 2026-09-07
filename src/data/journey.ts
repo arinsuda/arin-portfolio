@@ -10,29 +10,37 @@ export const journeyWaypoints: JourneyWaypoint[] = [
     organization: "King Mongkut's University of Technology Thonburi (KMUTT)",
     shortName: "KMUTT",
     role: {
-      en: "Bachelor of Science in Applied Computer Science",
-      th: "วิทยาศาสตรบัณฑิต สาขาวิชาวิทยาการคอมพิวเตอร์ประยุกต์"
+      en: "Bachelor of Science in Information Technology (IT)",
+      th: "วิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ (IT)"
     },
     period: {
-      en: "2021 – 2025",
-      th: "2564 – 2568"
+      en: "2022 – 2026",
+      th: "2565 – 2569"
     },
     location: {
       en: "Bangkok, Thailand",
       th: "กรุงเทพมหานคร ประเทศไทย"
     },
     description: {
-      en: "Completed undergraduate degree with a rigorous foundation in algorithms, relational database architectures, software engineering methodologies, and distributed systems.",
-      th: "สำเร็จการศึกษาระดับปริญญาตรี พร้อมรากฐานที่เข้มข้นด้านการออกแบบอัลกอริทึม สถาปัตยกรรมฐานข้อมูลเชิงสัมพันธ์ กระบวนการพัฒนาวิศวกรรมซอฟต์แวร์ และระบบแบบกระจาย"
+      en: "Studied at the School of Information Technology (SIT), KMUTT, building a rigorous foundation in backend architectures, relational database systems, software engineering methodologies, and distributed services.",
+      th: "การศึกษาระดับปริญญาตรี คณะเทคโนโลยีสารสนเทศ (SIT) มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี พร้อมรากฐานที่เข้มข้นด้านสถาปัตยกรรม Backend, ระบบฐานข้อมูลเชิงสัมพันธ์, กระบวนการพัฒนาวิศวกรรมซอฟต์แวร์ และระบบแบบกระจาย"
     },
     coCurricular: [
       {
-        en: "Head of Information and Media Team at Bangmod Camp",
-        th: "หัวหน้าฝ่ายสารสนเทศและสื่อ โครงการค่ายบางมด"
+        en: "SIT Photoclub Member",
+        th: "สมาชิกชมรมถ่ายภาพ SIT Photoclub"
       },
       {
-        en: "Academic and Activities Staff for Computer Science Orientation Camp",
-        th: "ทีมงานวิชาการและกิจกรรม ค่ายปฐมนิเทศสาขาวิทยาการคอมพิวเตอร์"
+        en: "Staff in KMUTT Startup Playground 2024",
+        th: "ทีมงานจัดกิจกรรม KMUTT Startup Playground 2024"
+      },
+      {
+        en: "Staff in IT#29 and IT#30 Starterpack Camp",
+        th: "ทีมงานพี่เลี้ยงค่าย IT#29 และ IT#30 Starterpack Camp"
+      },
+      {
+        en: "Staff in SIT Helloworld Goose camp",
+        th: "ทีมงานค่ายกิจกรรม SIT Helloworld Goose"
       }
     ],
     technologies: [
@@ -130,50 +138,34 @@ export const journeyWaypoints: JourneyWaypoint[] = [
       th: "โปรแกรมเมอร์ (Programmer)"
     },
     period: {
-      en: "July 2025 – Present",
-      th: "กรกฎาคม 2568 – ปัจจุบัน"
+      en: "September 2026 – Present",
+      th: "กันยายน 2569 – ปัจจุบัน"
     },
     location: {
-      en: "Rayong, Thailand",
-      th: "ระยอง ประเทศไทย"
+      en: "Samut Prakan, Thailand",
+      th: "สมุทรปราการ ประเทศไทย"
     },
     description: {
-      en: "Developing and maintaining internal enterprise management systems, industrial production tracking services, and relational database workflows for manufacturing operations.",
-      th: "พัฒนาและดูแลรักษาระบบซอฟต์แวร์บริหารจัดการภายในองค์กร ระบบติดตามกระบวนการผลิต และฐานข้อมูลเชิงสัมพันธ์เพื่อสนับสนุนการดำเนินงานในโรงงานอุตสาหกรรม"
+      en: "Currently working as a Programmer, primarily utilizing MySQL Server to write, design, and maintain internal business systems and relational database operations.",
+      th: "ปัจจุบันทำงานในตำแหน่งโปรแกรมเมอร์ โดยเน้นการใช้งาน MySQL Server เป็นหลักในการเขียน ออกแบบ และดูแลปรับปรุงระบบต่างๆ ภายในองค์กร"
     },
     highlights: [
       {
         text: {
-          en: "Design and maintain internal enterprise web applications and operational services for industrial automation.",
-          th: "ออกแบบและดูแลรักษาเว็บแอปพลิเคชันภายในองค์กรและระบบบริการสนับสนุนกระบวนการทำงานอัตโนมัติ"
-        }
-      },
-      {
-        text: {
-          en: "Optimize database schemas, stored procedures, and query performance for heavy manufacturing tracking.",
-          th: "ปรับแต่งโครงสร้างฐานข้อมูล และเพิ่มประสิทธิภาพการสืบค้นข้อมูลสำหรับระบบติดตามข้อมูลในสายการผลิต"
-        }
-      },
-      {
-        text: {
-          en: "Collaborate with cross-departmental teams to streamline internal production reporting and operational tools.",
-          th: "ประสานงานร่วมกับทีมข้ามสายงานเพื่อปรับปรุงระบบรายงานผลการผลิตและพัฒนาเครื่องมือสนับสนุนการทำงาน"
+          en: "Design, write, and maintain internal business systems with a primary focus on MySQL Server database architecture.",
+          th: "ออกแบบ เขียน และดูแลรักษาระบบการทำงานภายในองค์กร โดยเน้นการจัดการฐานข้อมูลด้วย MySQL Server เป็นหลัก"
         }
       }
     ],
     technologies: [
-      "C#",
-      ".NET",
-      "SQL Server",
-      "TypeScript",
-      "Vue.js",
-      "RESTful API",
-      "Docker"
+      "MySQL Server",
+      "SQL",
+      "Database Design"
     ],
     isConfidential: true,
     confidentialityNote: {
-      en: "Internal industrial operational systems and proprietary manufacturing processes are confidential.",
-      th: "ระบบปฏิบัติการภายในโรงงานอุตสาหกรรมและกระบวนการผลิตเฉพาะของบริษัทเป็นข้อมูลที่เป็นความลับ"
+      en: "Internal business systems and company operational workflows are confidential.",
+      th: "ระบบบริหารจัดการและกระบวนการทำงานภายในบริษัทเป็นข้อมูลความลับ"
     },
     logo: withBase("images/organizations/lpn-plate-mill.png"),
     organizationUrl: "http://www.lpnpm.co.th/"

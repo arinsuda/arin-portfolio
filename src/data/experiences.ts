@@ -10,50 +10,34 @@ export const experiences: Experience[] = [
     },
     position: "Programmer",
     duration: {
-      en: "July 2025 – Present",
-      th: "กรกฎาคม 2568 – ปัจจุบัน"
+      en: "September 2026 – Present",
+      th: "กันยายน 2569 – ปัจจุบัน"
     },
     location: {
-      en: "Rayong, Thailand",
-      th: "ระยอง ประเทศไทย"
+      en: "Samut Prakan, Thailand",
+      th: "สมุทรปราการ ประเทศไทย"
     },
     description: {
-      en: "Developing and maintaining internal enterprise management systems, industrial production tracking services, and relational database workflows for manufacturing operations.",
-      th: "พัฒนาและดูแลรักษาระบบซอฟต์แวร์บริหารจัดการภายในองค์กร ระบบติดตามกระบวนการผลิต และฐานข้อมูลเชิงสัมพันธ์เพื่อสนับสนุนการดำเนินงานในโรงงานอุตสาหกรรม"
+      en: "Currently working as a Programmer, primarily utilizing MySQL Server to design, write, and maintain internal business systems and database operations.",
+      th: "ปัจจุบันทำงานในตำแหน่งโปรแกรมเมอร์ โดยเน้นการใช้งาน MySQL Server เป็นหลักในการเขียน ออกแบบ และดูแลปรับปรุงระบบต่างๆ ภายในองค์กร"
     },
     highlights: [
       {
         text: {
-          en: "Design and maintain internal enterprise web applications and operational services for industrial automation.",
-          th: "ออกแบบและดูแลรักษาเว็บแอปพลิเคชันภายในองค์กรและระบบบริการสนับสนุนกระบวนการทำงานอัตโนมัติ"
-        }
-      },
-      {
-        text: {
-          en: "Optimize database schemas, stored procedures, and query performance for heavy manufacturing tracking.",
-          th: "ปรับแต่งโครงสร้างฐานข้อมูล และเพิ่มประสิทธิภาพการสืบค้นข้อมูลสำหรับระบบติดตามข้อมูลในสายการผลิต"
-        }
-      },
-      {
-        text: {
-          en: "Collaborate with cross-departmental teams to streamline internal production reporting and operational tools.",
-          th: "ประสานงานร่วมกับทีมข้ามสายงานเพื่อปรับปรุงระบบรายงานผลการผลิตและพัฒนาเครื่องมือสนับสนุนการทำงาน"
+          en: "Design, write, and maintain internal systems with a primary focus on MySQL Server database architecture.",
+          th: "ออกแบบ เขียน และดูแลรักษาระบบการทำงานภายในองค์กร โดยเน้นการจัดการฐานข้อมูลด้วย MySQL Server เป็นหลัก"
         }
       }
     ],
     technologies: [
-      "C#",
-      ".NET",
-      "SQL Server",
-      "TypeScript",
-      "Vue.js",
-      "RESTful API",
-      "Docker"
+      "MySQL Server",
+      "SQL",
+      "Database Design"
     ],
     isConfidential: true,
     confidentialityNote: {
-      en: "Internal industrial operational systems and proprietary manufacturing processes are confidential.",
-      th: "ระบบปฏิบัติการภายในโรงงานอุตสาหกรรมและกระบวนการผลิตเฉพาะของบริษัทเป็นข้อมูลที่เป็นความลับ"
+      en: "Internal business systems and company operational workflows are confidential.",
+      th: "ระบบบริหารจัดการและกระบวนการทำงานภายในบริษัทเป็นข้อมูลความลับ"
     },
     logo: withBase("images/organizations/lpn-plate-mill.png"),
     companyUrl: "http://www.lpnpm.co.th/"
