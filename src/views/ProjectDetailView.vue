@@ -11,7 +11,7 @@
         <div class="back-link-wrapper">
           <Button
             as="router-link"
-            to="/#projects"
+            to="/projects"
             severity="secondary"
             variant="text"
             size="small"
@@ -227,7 +227,7 @@
       <i class="pi pi-exclamation-circle text-4xl text-amber mb-4"></i>
       <h1 class="error-title">{{ t.projectDetail.notFoundTitle }}</h1>
       <p class="error-text">{{ t.projectDetail.notFoundText }}</p>
-      <Button as="router-link" to="/" severity="primary" class="mt-4">
+      <Button as="router-link" to="/projects" severity="primary" class="mt-4">
         {{ t.projectDetail.notFoundBtn }}
       </Button>
     </div>
@@ -255,22 +255,12 @@ const project = computed(() => {
 });
 
 const getFeatureStatusText = (status: FeatureStatus) => {
-  if (locale.value === "th") {
-    switch (status) {
-      case "confirmed": return "ยืนยันแล้ว";
-      case "implemented": return "เปิดใช้งานแล้ว";
-      case "in-development": return "กำลังพัฒนา";
-      case "planned": return "วางแผนแล้ว";
-      default: return status;
-    }
-  } else {
-    switch (status) {
-      case "confirmed": return "Confirmed";
-      case "implemented": return "Implemented";
-      case "in-development": return "In Development";
-      case "planned": return "Planned";
-      default: return status;
-    }
+  switch (status) {
+    case "confirmed": return t.value.status.confirmed;
+    case "implemented": return t.value.status.implemented;
+    case "in-development": return t.value.status.inDevelopment;
+    case "planned": return t.value.status.planned;
+    default: return status;
   }
 };
 

@@ -3,7 +3,63 @@ import { withBase } from "../utils/assets";
 
 export const experiences: Experience[] = [
   {
-    company: "Stream I.T. Consulting Ltd. | Bangkok, Thailand",
+    company: "LPN Plate Mill Public Company Limited",
+    role: {
+      en: "Programmer",
+      th: "โปรแกรมเมอร์ (Programmer)"
+    },
+    position: "Programmer",
+    duration: {
+      en: "July 2025 – Present",
+      th: "กรกฎาคม 2568 – ปัจจุบัน"
+    },
+    location: {
+      en: "Rayong, Thailand",
+      th: "ระยอง ประเทศไทย"
+    },
+    description: {
+      en: "Developing and maintaining internal enterprise management systems, industrial production tracking services, and relational database workflows for manufacturing operations.",
+      th: "พัฒนาและดูแลรักษาระบบซอฟต์แวร์บริหารจัดการภายในองค์กร ระบบติดตามกระบวนการผลิต และฐานข้อมูลเชิงสัมพันธ์เพื่อสนับสนุนการดำเนินงานในโรงงานอุตสาหกรรม"
+    },
+    highlights: [
+      {
+        text: {
+          en: "Design and maintain internal enterprise web applications and operational services for industrial automation.",
+          th: "ออกแบบและดูแลรักษาเว็บแอปพลิเคชันภายในองค์กรและระบบบริการสนับสนุนกระบวนการทำงานอัตโนมัติ"
+        }
+      },
+      {
+        text: {
+          en: "Optimize database schemas, stored procedures, and query performance for heavy manufacturing tracking.",
+          th: "ปรับแต่งโครงสร้างฐานข้อมูล และเพิ่มประสิทธิภาพการสืบค้นข้อมูลสำหรับระบบติดตามข้อมูลในสายการผลิต"
+        }
+      },
+      {
+        text: {
+          en: "Collaborate with cross-departmental teams to streamline internal production reporting and operational tools.",
+          th: "ประสานงานร่วมกับทีมข้ามสายงานเพื่อปรับปรุงระบบรายงานผลการผลิตและพัฒนาเครื่องมือสนับสนุนการทำงาน"
+        }
+      }
+    ],
+    technologies: [
+      "C#",
+      ".NET",
+      "SQL Server",
+      "TypeScript",
+      "Vue.js",
+      "RESTful API",
+      "Docker"
+    ],
+    isConfidential: true,
+    confidentialityNote: {
+      en: "Internal industrial operational systems and proprietary manufacturing processes are confidential.",
+      th: "ระบบปฏิบัติการภายในโรงงานอุตสาหกรรมและกระบวนการผลิตเฉพาะของบริษัทเป็นข้อมูลที่เป็นความลับ"
+    },
+    logo: withBase("images/organizations/lpn-plate-mill.png"),
+    companyUrl: "http://www.lpnpm.co.th/"
+  },
+  {
+    company: "Stream I.T. Consulting Ltd.",
     role: {
       en: "Software Engineer Intern",
       th: "นักศึกษาฝึกงานตำแหน่งวิศวกรซอฟต์แวร์"

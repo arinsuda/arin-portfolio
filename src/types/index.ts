@@ -6,6 +6,17 @@ export interface LocalizedString {
 export interface SocialLinks {
   github: string;
   linkedin?: string;
+  instagram?: string;
+  twitter?: string;
+  facebook?: string;
+}
+
+export interface SocialItem {
+  id: string;
+  label?: string;
+  url: string;
+  icon: string;
+  title: string;
 }
 
 export interface ProfileImage {
@@ -31,6 +42,14 @@ export interface Profile {
     en: string;
     th: string;
   };
+  typingWords?: {
+    en: string[];
+    th: string[];
+  };
+  heroBadges?: Array<{
+    label: string;
+    severity: string;
+  }>;
 }
 
 export interface ExperienceHighlight {
@@ -137,5 +156,28 @@ export interface SoftSkill {
   name: LocalizedString;
   description: LocalizedString;
   icon: any;
+}
+
+export type WaypointCategory = "academic" | "internship" | "professional";
+export type WaypointStatus = "completed" | "active";
+
+export interface JourneyWaypoint {
+  id: string;
+  code: string; // e.g., "WP-01", "WP-02", "WP-03"
+  category: WaypointCategory;
+  status: WaypointStatus;
+  organization: string;
+  shortName?: string;
+  role: LocalizedString;
+  period: LocalizedString;
+  location: LocalizedString;
+  description: LocalizedString;
+  highlights?: Array<{ text: LocalizedString }>;
+  technologies?: string[];
+  logo?: string;
+  organizationUrl?: string;
+  isConfidential?: boolean;
+  confidentialityNote?: LocalizedString;
+  coCurricular?: LocalizedString[];
 }
 

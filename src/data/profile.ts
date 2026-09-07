@@ -64,10 +64,31 @@ export const profile: Profile = {
   socials: {
     github: "https://github.com/arinsuda",
     linkedin: "https://www.linkedin.com/in/arin-sudakijjathorn-936914325/",
+    instagram: "/social/instagram",
+    twitter: "/social/x",
+    facebook: "/social/facebook",
   },
   availability: {
     enabled: true,
-    en: "Open to Backend Developer and Full-Stack Developer opportunities",
-    th: "เปิดรับโอกาสในตำแหน่ง Backend Developer และ Full-Stack Developer",
+    en: "Programmer at LPN Plate Mill | Open to opportunities",
+    th: "โปรแกรมเมอร์ที่ LPN Plate Mill | เปิดรับโอกาสใหม่ๆ",
   },
-}
+  typingWords: {
+    en: [
+      "Backend Architectures",
+      "Relational Schemas",
+      "High-Throughput APIs",
+      "Scalable Services",
+    ],
+    th: [
+      "Backend Architectures",
+      "Relational Schemas",
+      "High-Throughput APIs",
+      "Scalable Services",
+    ],
+  },
+  heroBadges: [
+    { label: "Go Fiber & Spring Boot", severity: "success" },
+    { label: "PostgreSQL & MySQL", severity: "info" },
+  ],
+};

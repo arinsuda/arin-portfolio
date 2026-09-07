@@ -73,20 +73,11 @@ const getCategoryIcon = (tier: string) => {
 };
 
 const getTierLabel = (tier: string) => {
-  if (locale.value === "th") {
-    switch (tier) {
-      case "core": return "ความเชี่ยวชาญหลัก";
-      case "project": return "ใช้งานในโปรเจกต์";
-      case "familiarity": return "คุ้นเคย & กำลังศึกษา";
-      default: return tier;
-    }
-  } else {
-    switch (tier) {
-      case "core": return "Core Proficiency";
-      case "project": return "Production & Projects";
-      case "familiarity": return "Familiarity";
-      default: return tier;
-    }
+  switch (tier) {
+    case "core": return t.value.skills.coreTier;
+    case "project": return t.value.skills.projectTier;
+    case "familiarity": return t.value.skills.familiarityTier;
+    default: return tier;
   }
 };
 </script>

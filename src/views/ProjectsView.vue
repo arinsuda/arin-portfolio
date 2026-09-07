@@ -17,7 +17,7 @@
             @click="activeFilter = filter.id"
           >
             <i :class="filter.icon" class="pill-icon"></i>
-            <span>{{ locale === 'th' ? filter.label.th : filter.label.en }}</span>
+            <span>{{ filter.label }}</span>
             <span class="pill-count">{{ filter.count }}</span>
           </button>
         </div>
@@ -124,19 +124,19 @@ const activeFilter = ref<"all" | "featured" | "additional">("all");
 const filterOptions = computed(() => [
   {
     id: "all" as const,
-    label: { en: "All Projects", th: "โปรเจกต์ทั้งหมด" },
+    label: t.value.projects.allFilter,
     icon: "pi pi-grid",
     count: projects.length
   },
   {
     id: "featured" as const,
-    label: { en: "Featured Systems", th: "โปรเจกต์แนะนำ" },
+    label: t.value.projects.featuredFilter,
     icon: "pi pi-star",
     count: projects.filter(p => p.category === "featured").length
   },
   {
     id: "additional" as const,
-    label: { en: "Academic & Tools", th: "โครงงานวิชาการและเครื่องมือ" },
+    label: t.value.projects.academicFilter,
     icon: "pi pi-book",
     count: projects.filter(p => p.category === "additional").length
   }
@@ -152,6 +152,9 @@ const filteredProjects = computed(() => {
 .projects-section {
   position: relative;
   background-color: var(--bg-secondary);
+  padding-top: calc(76px + 2.5rem);
+  padding-bottom: 6rem;
+  min-height: 100vh;
 }
 
 /* Filter Controls */
@@ -189,7 +192,7 @@ const filteredProjects = computed(() => {
 
 .filter-pill-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-tertiary);
 }
 
 .filter-pill-btn.active {
@@ -226,7 +229,7 @@ const filteredProjects = computed(() => {
   flex-direction: column;
   height: 100%;
   border-radius: 16px !important;
-  background: var(--bg-primary) !important;
+  background: var(--bg-secondary) !important;
   border: 1px solid var(--border-color) !important;
   transition: all var(--transition-normal) !important;
 }

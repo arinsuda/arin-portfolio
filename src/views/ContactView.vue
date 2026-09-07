@@ -17,7 +17,7 @@
               </div>
 
               <h3 class="contact-heading">
-                {{ locale === 'th' ? 'ร่วมงานหรือสนทนาเกี่ยวกับเทคโนโลยี' : 'Let\'s collaborate on your next project' }}
+                {{ t.contact.subtitle }}
               </h3>
 
               <p class="contact-lead-text">
@@ -46,7 +46,7 @@
                   id="copy-email-btn"
                 >
                   <i :class="copied ? 'pi pi-check' : 'pi pi-copy'"></i>
-                  <span>{{ copied ? (locale === 'th' ? 'คัดลอกเรียบร้อยแล้ว!' : 'Copied to Clipboard!') : (locale === 'th' ? 'คัดลอกอีเมล' : 'Copy Email Address') }}</span>
+                  <span>{{ copied ? t.contact.copiedEmail : t.contact.copyEmail }}</span>
                 </Button>
 
                 <!-- Phone Call Button -->
@@ -79,16 +79,65 @@
                 <!-- LinkedIn Profile if available -->
                 <Button
                   v-if="profile.socials.linkedin"
-                  as="a"
-                  :href="profile.socials.linkedin"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  :as="profile.socials.linkedin.startsWith('http') ? 'a' : 'router-link'"
+                  :href="profile.socials.linkedin.startsWith('http') ? profile.socials.linkedin : undefined"
+                  :to="!profile.socials.linkedin.startsWith('http') ? profile.socials.linkedin : undefined"
+                  :target="profile.socials.linkedin.startsWith('http') ? '_blank' : undefined"
+                  :rel="profile.socials.linkedin.startsWith('http') ? 'noopener noreferrer' : undefined"
                   severity="secondary"
                   outlined
                   class="action-btn"
                 >
                   <i class="pi pi-linkedin"></i>
-                  <span>LinkedIn Profile</span>
+                  <span>{{ t.contact.linkedinProfile }}</span>
+                </Button>
+
+                <!-- Instagram Profile -->
+                <Button
+                  v-if="profile.socials.instagram"
+                  :as="profile.socials.instagram.startsWith('http') ? 'a' : 'router-link'"
+                  :href="profile.socials.instagram.startsWith('http') ? profile.socials.instagram : undefined"
+                  :to="!profile.socials.instagram.startsWith('http') ? profile.socials.instagram : undefined"
+                  :target="profile.socials.instagram.startsWith('http') ? '_blank' : undefined"
+                  :rel="profile.socials.instagram.startsWith('http') ? 'noopener noreferrer' : undefined"
+                  severity="secondary"
+                  outlined
+                  class="action-btn"
+                >
+                  <i class="pi pi-instagram"></i>
+                  <span>{{ t.contact.instagramProfile }}</span>
+                </Button>
+
+                <!-- X (Twitter) Profile -->
+                <Button
+                  v-if="profile.socials.twitter"
+                  :as="profile.socials.twitter.startsWith('http') ? 'a' : 'router-link'"
+                  :href="profile.socials.twitter.startsWith('http') ? profile.socials.twitter : undefined"
+                  :to="!profile.socials.twitter.startsWith('http') ? profile.socials.twitter : undefined"
+                  :target="profile.socials.twitter.startsWith('http') ? '_blank' : undefined"
+                  :rel="profile.socials.twitter.startsWith('http') ? 'noopener noreferrer' : undefined"
+                  severity="secondary"
+                  outlined
+                  class="action-btn"
+                >
+                  <i class="pi pi-twitter"></i>
+                  <span>{{ t.contact.twitterProfile }}</span>
+                </Button>
+
+                <!-- Facebook Profile -->
+                <Button
+                  v-if="profile.socials.facebook"
+                  :as="profile.socials.facebook.startsWith('http') ? 'a' : 'router-link'"
+                  :href="profile.socials.facebook.startsWith('http') ? profile.socials.facebook : undefined"
+                  :to="!profile.socials.facebook.startsWith('http') ? profile.socials.facebook : undefined"
+                  :target="profile.socials.facebook.startsWith('http') ? '_blank' : undefined"
+                  :rel="profile.socials.facebook.startsWith('http') ? 'noopener noreferrer' : undefined"
+                  severity="secondary"
+                  outlined
+                  class="action-btn"
+                >
+                  <i class="pi pi-facebook"></i>
+                  <span>{{ t.contact.facebookProfile }}</span>
                 </Button>
               </div>
             </div>
@@ -107,7 +156,7 @@ import { useToast } from "primevue/usetoast";
 import { profile } from "../data/profile";
 import { useI18n } from "../i18n";
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
 const toast = useToast();
 const copied = ref(false);
 
@@ -117,8 +166,8 @@ const copyEmailToClipboard = () => {
       copied.value = true;
       toast.add({
         severity: "success",
-        summary: locale.value === "th" ? "คัดลอกสำเร็จ" : "Email Copied!",
-        detail: profile.email,
+        summary: t.value.common.success,
+        detail: t.value.contact.emailCopied,
         life: 3000
       });
       setTimeout(() => {
@@ -128,8 +177,8 @@ const copyEmailToClipboard = () => {
     .catch(() => {
       toast.add({
         severity: "error",
-        summary: locale.value === "th" ? "เกิดข้อผิดพลาด" : "Failed",
-        detail: locale.value === "th" ? "ไม่สามารถคัดลอกอีเมลได้" : "Could not copy email",
+        summary: t.value.common.error,
+        detail: t.value.contact.failedCopy,
         life: 3000
       });
     });

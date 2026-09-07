@@ -37,33 +37,28 @@
         <!-- Quick Links & Socials -->
         <div class="footer-nav">
           <div class="footer-nav-col">
-            <h5 class="footer-heading">Navigation</h5>
+            <h5 class="footer-heading">{{ t.footer.navigationHeading }}</h5>
             <ul class="footer-link-list">
-              <li><a href="#about" class="footer-nav-link">{{ t.nav.about }}</a></li>
-              <li><a href="#experience" class="footer-nav-link">{{ t.nav.experience }}</a></li>
-              <li><a href="#projects" class="footer-nav-link">{{ t.nav.projects }}</a></li>
-              <li><a href="#skills" class="footer-nav-link">{{ t.nav.skills }}</a></li>
-              <li><a href="#contact" class="footer-nav-link">{{ t.nav.contact }}</a></li>
+              <li><router-link to="/" class="footer-nav-link">{{ t.nav.home }}</router-link></li>
+              <li><router-link to="/about" class="footer-nav-link">{{ t.nav.about }}</router-link></li>
+              <li><router-link to="/projects" class="footer-nav-link">{{ t.nav.projects }}</router-link></li>
             </ul>
           </div>
 
           <div class="footer-nav-col">
-            <h5 class="footer-heading">Connect</h5>
+            <h5 class="footer-heading">{{ t.footer.connectHeading }}</h5>
             <ul class="footer-link-list">
-              <li>
-                <a :href="profile.socials.github" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
-                  <i class="pi pi-github icon-sm"></i> GitHub
-                </a>
-              </li>
-              <li v-if="profile.socials.linkedin">
-                <a :href="profile.socials.linkedin" target="_blank" rel="noopener noreferrer" class="footer-nav-link">
-                  <i class="pi pi-linkedin icon-sm"></i> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a :href="'mailto:' + profile.email" class="footer-nav-link">
-                  <i class="pi pi-envelope icon-sm"></i> Email
-                </a>
+              <li v-for="s in footerSocials" :key="s.id">
+                <component
+                  :is="s.url.startsWith('http') || s.url.startsWith('mailto:') ? 'a' : 'router-link'"
+                  :href="s.url.startsWith('http') || s.url.startsWith('mailto:') ? s.url : undefined"
+                  :to="!s.url.startsWith('http') && !s.url.startsWith('mailto:') ? s.url : undefined"
+                  :target="s.url.startsWith('http') ? '_blank' : undefined"
+                  :rel="s.url.startsWith('http') ? 'noopener noreferrer' : undefined"
+                  class="footer-nav-link"
+                >
+                  <i :class="s.icon + ' icon-sm'"></i> {{ s.label }}
+                </component>
               </li>
             </ul>
           </div>
@@ -80,15 +75,32 @@
     </footer>
   </div>
 </template>
-
 <script setup lang="ts">
+import { computed } from "vue";
 import Toast from "primevue/toast";
 import Navbar from "./components/Navbar.vue";
 import { profile } from "./data/profile";
 import { useI18n } from "./i18n";
+import type { SocialItem } from "./types";
 
 const { t } = useI18n();
 const currentYear = new Date().getFullYear();
+
+interface FooterSocialItem extends SocialItem {
+  label: string;
+}
+
+const footerSocials = computed<FooterSocialItem[]>(() => {
+  const items: { id: string; label: string; icon: string; url?: string; title: string }[] = [
+    { id: "github", label: "GitHub", icon: "pi pi-github", url: profile.socials.github, title: t.value.contact.githubProfile },
+    { id: "linkedin", label: "LinkedIn", icon: "pi pi-linkedin", url: profile.socials.linkedin, title: t.value.contact.linkedinProfile },
+    { id: "instagram", label: "Instagram", icon: "pi pi-instagram", url: profile.socials.instagram, title: t.value.contact.instagramProfile },
+    { id: "twitter", label: "X (Twitter)", icon: "pi pi-twitter", url: profile.socials.twitter, title: t.value.contact.twitterProfile },
+    { id: "facebook", label: "Facebook", icon: "pi pi-facebook", url: profile.socials.facebook, title: t.value.contact.facebookProfile },
+    { id: "email", label: "Email", icon: "pi pi-envelope", url: "mailto:" + profile.email, title: t.value.contact.sendEmail },
+  ];
+  return items.filter((item): item is FooterSocialItem => typeof item.url === "string" && item.url.length > 0);
+});
 </script>
 
 <style>

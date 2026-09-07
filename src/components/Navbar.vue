@@ -7,22 +7,14 @@
         <span class="logo-full">Arin<span class="logo-dot">.</span></span>
       </router-link>
 
-      <!-- Desktop Navigation Menu -->
+      <!-- Desktop Navigation Menu (Minimalist & High Signal) -->
       <nav class="desktop-nav">
         <ul class="nav-links">
-          <li v-for="item in navItems" :key="item.href">
-            <a
-              v-if="isHomePage"
-              :href="item.href"
-              class="nav-link"
-              @click="handleNavClick($event, item.href)"
-            >
-              {{ item.label }}
-            </a>
+          <li v-for="item in navItems" :key="item.to">
             <router-link
-              v-else
-              :to="'/' + item.href"
+              :to="item.to"
               class="nav-link"
+              :class="{ 'nav-link-active': isCurrentRoute(item.to) }"
             >
               {{ item.label }}
             </router-link>
@@ -39,8 +31,8 @@
           rounded
           class="action-btn lang-btn"
           @click="toggleLanguage"
-          :aria-label="locale === 'th' ? 'Switch to English' : 'สลับเป็นภาษาไทย'"
-          :title="locale === 'th' ? 'Switch to English' : 'สลับเป็นภาษาไทย'"
+          :aria-label="t.common.langSwitch"
+          :title="t.common.langSwitch"
         >
           <i class="pi pi-globe lang-icon"></i>
           <span class="lang-text">{{ locale === 'th' ? 'EN' : 'TH' }}</span>
@@ -53,8 +45,8 @@
           rounded
           class="action-btn theme-btn"
           @click="toggleTheme"
-          :aria-label="isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
-          :title="isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+          :aria-label="isDarkTheme ? t.common.switchToLight : t.common.switchToDark"
+          :title="isDarkTheme ? t.common.switchToLight : t.common.switchToDark"
         >
           <i :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
         </Button>
@@ -78,27 +70,29 @@
       v-model:visible="isDrawerOpen"
       position="right"
       class="mobile-drawer"
-      :header="locale === 'th' ? 'เมนูนำทาง' : 'Navigation'"
+      :header="t.nav.menu"
     >
       <div class="drawer-content">
         <ul class="drawer-nav-list">
-          <li v-for="item in navItems" :key="item.href">
-            <a
-              v-if="isHomePage"
-              :href="item.href"
-              class="drawer-nav-link"
-              @click="handleNavClick($event, item.href)"
-            >
-              <i :class="getNavIcon(item.href)" class="drawer-nav-icon"></i>
-              <span>{{ item.label }}</span>
-            </a>
+          <li>
             <router-link
-              v-else
-              :to="'/' + item.href"
+              to="/"
               class="drawer-nav-link"
+              :class="{ 'nav-link-active': route.path === '/' }"
               @click="isDrawerOpen = false"
             >
-              <i :class="getNavIcon(item.href)" class="drawer-nav-icon"></i>
+              <i class="pi pi-home drawer-nav-icon"></i>
+              <span>{{ t.nav.home }}</span>
+            </router-link>
+          </li>
+          <li v-for="item in navItems" :key="item.to">
+            <router-link
+              :to="item.to"
+              class="drawer-nav-link"
+              :class="{ 'nav-link-active': isCurrentRoute(item.to) }"
+              @click="isDrawerOpen = false"
+            >
+              <i :class="item.icon" class="drawer-nav-icon"></i>
               <span>{{ item.label }}</span>
             </router-link>
           </li>
@@ -113,7 +107,7 @@
               @click="toggleLanguage"
             >
               <i class="pi pi-globe"></i>
-              <span>{{ locale === 'th' ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย' }}</span>
+              <span>{{ locale === 'th' ? t.common.switchLangToEn : t.common.switchLangToTh }}</span>
             </Button>
             <Button
               severity="secondary"
@@ -122,7 +116,7 @@
               @click="toggleTheme"
             >
               <i :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
-              <span>{{ isDarkTheme ? 'Light Mode' : 'Dark Mode' }}</span>
+              <span>{{ isDarkTheme ? t.common.lightMode : t.common.darkMode }}</span>
             </Button>
           </div>
         </div>
@@ -146,41 +140,19 @@ const isDarkTheme = ref(true);
 const { t, locale, toggleLanguage } = useI18n();
 
 const navItems = computed(() => [
-  { label: t.value.nav.about, href: "#about" },
-  { label: t.value.nav.experience, href: "#experience" },
-  { label: t.value.nav.projects, href: "#projects" },
-  { label: t.value.nav.skills, href: "#skills" },
-  { label: t.value.nav.education, href: "#education" },
-  { label: t.value.nav.contact, href: "#contact" },
+  { label: t.value.nav.about, to: "/about", icon: "pi pi-user" },
+  { label: t.value.nav.projects, to: "/projects", icon: "pi pi-folder" },
 ]);
 
-const isHomePage = computed(() => route.path === "/");
-
-const getNavIcon = (href: string) => {
-  switch (href) {
-    case "#about": return "pi pi-user";
-    case "#experience": return "pi pi-briefcase";
-    case "#projects": return "pi pi-folder";
-    case "#skills": return "pi pi-code";
-    case "#education": return "pi pi-book";
-    case "#contact": return "pi pi-envelope";
-    default: return "pi pi-chevron-right";
+const isCurrentRoute = (path: string) => {
+  if (path === "/") {
+    return route.path === "/";
   }
+  return route.path.startsWith(path);
 };
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20;
-};
-
-const handleNavClick = (event: Event, href: string) => {
-  isDrawerOpen.value = false;
-  const targetId = href.replace("#", "");
-  const targetElement = document.getElementById(targetId);
-  if (targetElement) {
-    event.preventDefault();
-    targetElement.scrollIntoView({ behavior: "smooth" });
-    history.pushState(null, "", href);
-  }
 };
 
 const toggleTheme = () => {
@@ -200,10 +172,10 @@ const toggleTheme = () => {
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
-  
+
   const savedTheme = localStorage.getItem("theme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  
+
   if (savedTheme === "light" || (!savedTheme && !prefersDark)) {
     isDarkTheme.value = false;
     document.documentElement.classList.remove("dark");
@@ -300,20 +272,37 @@ onUnmounted(() => {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.25rem;
 }
 
 .nav-link {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
   position: relative;
   padding: 0.4rem 0;
+  text-decoration: none;
 }
 
 .nav-link:hover {
   color: var(--text-primary);
+}
+
+.nav-link-active {
+  color: var(--accent-emerald) !important;
+  font-weight: 700 !important;
+}
+
+.nav-link-active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-emerald);
+  border-radius: 2px;
 }
 
 /* Actions */
@@ -331,14 +320,14 @@ onUnmounted(() => {
   justify-content: center;
   color: var(--text-secondary) !important;
   border: 1px solid var(--border-color) !important;
-  background: rgba(255, 255, 255, 0.02) !important;
+  background: var(--bg-secondary) !important;
   transition: all var(--transition-fast) !important;
 }
 
 .action-btn:hover {
   color: var(--text-primary) !important;
   border-color: var(--border-hover) !important;
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: var(--bg-tertiary) !important;
 }
 
 .lang-btn {
@@ -355,6 +344,14 @@ onUnmounted(() => {
 
 .mobile-menu-trigger {
   display: none !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  background: var(--bg-secondary) !important;
+}
+
+.mobile-menu-trigger:hover {
+  background: var(--bg-tertiary) !important;
+  border-color: var(--border-hover) !important;
 }
 
 /* Mobile Drawer Styling */
@@ -382,13 +379,21 @@ onUnmounted(() => {
   font-weight: 500;
   color: var(--text-secondary);
   border: 1px solid transparent;
+  text-decoration: none;
   transition: all var(--transition-fast);
 }
 
 .drawer-nav-link:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-tertiary);
   border-color: var(--border-color);
+}
+
+.drawer-nav-link.nav-link-active {
+  color: var(--accent-emerald);
+  background: var(--bg-tertiary);
+  border-color: rgba(16, 185, 129, 0.25);
+  font-weight: 600;
 }
 
 .drawer-nav-icon {
@@ -411,7 +416,7 @@ onUnmounted(() => {
   .desktop-nav {
     display: none;
   }
-  
+
   .mobile-menu-trigger {
     display: inline-flex !important;
   }

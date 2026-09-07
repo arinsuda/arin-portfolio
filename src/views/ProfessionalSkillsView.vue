@@ -4,7 +4,7 @@
       <div class="section-header">
         <h2 class="section-title">{{ t.nav.professionalSkills }}</h2>
         <p class="section-subtitle">
-          {{ locale === 'th' ? 'ทักษะการทำงานร่วมกับผู้อื่นและการคิดเชิงวิศวกรรมที่หล่อหลอมจากประสบการณ์จริง' : 'Engineering mindset, problem-solving habits, and collaboration skills backed by project ownership.' }}
+          {{ t.skills.professionalSkillsSubtitle }}
         </p>
       </div>
 

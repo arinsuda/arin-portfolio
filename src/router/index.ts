@@ -1,23 +1,44 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
-import PortfolioView from "../views/PortfolioView.vue";
-import ProjectDetailView from "../views/ProjectDetailView.vue";
+import HomeView from "../views/HomeView.vue";
 
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
-    name: "Portfolio",
-    component: PortfolioView,
+    name: "Home",
+    component: HomeView,
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: () => import("../views/AboutView.vue"),
+  },
+  {
+    path: "/projects",
+    name: "Projects",
+    component: () => import("../views/ProjectsView.vue"),
   },
   {
     path: "/project/:slug",
     name: "ProjectDetail",
-    component: ProjectDetailView,
+    component: () => import("../views/ProjectDetailView.vue"),
+    props: true,
+  },
+  {
+    path: "/404",
+    name: "NotFound",
+    component: () => import("../views/NotFoundView.vue"),
+  },
+  {
+    path: "/social/:platform",
+    name: "SocialPlaceholder",
+    component: () => import("../views/NotFoundView.vue"),
     props: true,
   },
   {
     path: "/:pathMatch(.*)*",
-    redirect: "/",
+    name: "CatchAllNotFound",
+    component: () => import("../views/NotFoundView.vue"),
   },
 ];
 
@@ -34,7 +55,7 @@ const router = createRouter({
     if (savedPosition) {
       return savedPosition;
     }
-    return { top: 0 };
+    return { top: 0, left: 0 };
   },
 });
 

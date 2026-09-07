@@ -1,6 +1,7 @@
 <template>
   <div class="portfolio-view">
     <HomeView id="home" />
+    <ContributionGraph id="contributions" />
     <AboutView id="about" />
     <ExperienceView id="experience" />
     <ProjectsView id="projects" />
@@ -13,6 +14,7 @@
 
 <script setup lang="ts">
 import HomeView from "./HomeView.vue";
+import ContributionGraph from "../components/ContributionGraph.vue";
 import AboutView from "./AboutView.vue";
 import ExperienceView from "./ExperienceView.vue";
 import ProjectsView from "./ProjectsView.vue";

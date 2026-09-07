@@ -102,7 +102,7 @@
 
               <!-- Highlights / Key Accomplishments -->
               <div class="exp-highlights">
-                <h5 class="highlights-heading">{{ locale === 'th' ? 'ผลงานและความรับผิดชอบหลัก:' : 'Key Contributions & Responsibilities:' }}</h5>
+                <h5 class="highlights-heading">{{ t.experience.highlightsHeading }}</h5>
                 <ul class="highlights-list">
                   <li v-for="(highlight, i) in slotProps.item.highlights" :key="i">
                     <i class="pi pi-check text-xs highlight-bullet"></i>

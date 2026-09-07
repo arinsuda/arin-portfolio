@@ -2,87 +2,179 @@ import type { UITranslations } from "./types";
 
 export const th: UITranslations = {
   nav: {
-    home: "หน้าแรก",
-    about: "เกี่ยวกับผม",
-    experience: "ประสบการณ์การทำงาน",
-    projects: "ผลงานโปรเจกต์",
-    skills: "ทักษะเทคนิค",
+    home: "หน้าหลัก",
+    about: "เกี่ยวกับ",
+    experience: "ประสบการณ์",
+    projects: "ผลงาน",
+    skills: "ทักษะ",
     professionalSkills: "ทักษะวิชาชีพ",
     education: "การศึกษา",
-    contact: "ติดต่อ"
+    contact: "ติดต่อ",
+    menu: "เมนูนำทาง"
   },
   hero: {
     greeting: "สวัสดีครับ ผมชื่อ",
-    viewProjects: "ดูโปรเจกต์ของผม",
-    talk: "คุยกันได้ครับ",
-    viewResume: "ดูเรซูเม่",
-    downloadResume: "ดาวน์โหลดเรซูเม่",
-    robustArchitectures: "โครงสร้างระบบที่มั่นคง",
-    typeSafeApis: "API ที่ปลอดภัยด้วย Type"
+    viewProjects: "ดูผลงานทั้งหมด",
+    talk: "ติดต่อพูดคุย",
+    viewResume: "View Résumé",
+    downloadResume: "ดาวน์โหลดเรซูเม่ (PDF)",
+    robustArchitectures: "สถาปัตยกรรมระบบที่มั่นคง",
+    typeSafeApis: "Type-Safe APIs"
+  },
+  contributions: {
+    title: "Contribution Graph",
+    contributionsIn: "contributions ในปี",
+    less: "น้อย",
+    more: "มาก",
+    contribution: "contribution",
+    contributions: "contributions",
+    on: "เมื่อ"
+  },
+  home: {
+    featuredTitle: "ผลงานที่โดดเด่น",
+    featuredSubtitle: "ระบบและสถาปัตยกรรมซอฟต์แวร์ที่ได้รับการคัดสรรที่ผมได้ออกแบบและพัฒนา",
+    exploreAllProjects: "ดูผลงานทั้งหมด",
+    experienceTitle: "ภาพรวมประสบการณ์การทำงาน",
+    experienceSubtitle: "การพัฒนาซอฟต์แวร์ระดับองค์กรที่ บริษัท สตรีม ไอ.ที. คอนซัลติ้ง จำกัด",
+    learnMoreAbout: "อ่านรายละเอียดเพิ่มเติมในหน้าเกี่ยวกับ"
+  },
+  about: {
+    title: "เกี่ยวกับผม",
+    subtitle: "ข้อมูลเบื้องหลัง แนวคิดทางวิศวกรรมซอฟต์แวร์ และเครื่องมือทางเทคนิค",
+    headlinePrefix: "ผมคือ",
+    headlineSuffix: "อาศัยอยู่ในประเทศไทย มุ่งมั่นสร้างสถาปัตยกรรม Backend ที่แข็งแกร่ง",
+    usageTitle: "Usage",
+    usageSubtitle: "เครื่องมือ เทคโนโลยี และอุปกรณ์ที่ผมใช้งานเป็นประจำในการพัฒนาซอฟต์แวร์",
+    photoCarouselPrev: "รูปก่อนหน้า",
+    photoCarouselNext: "รูปถัดไป",
+    photoCarouselSlide: "ไปยังรูปที่",
+    photoZoom: "ดูรูปขนาดเต็ม",
+    photoClose: "ปิดหน้าต่างแสดงรูป"
   },
   experience: {
     title: "ประสบการณ์การทำงาน",
-    subtitle: "เส้นทางประสบการณ์ฝึกงานด้านวิศวกรรมซอฟต์แวร์ระดับมืออาชีพและบทบาทหน้าที่ที่ได้รับการรับรอง",
-    confidentialNotice: "หมายเหตุการรักษาความลับ:"
+    subtitle: "เส้นทางการทำงานวิศวกรซอฟต์แวร์ระดับมืออาชีพและบทบาทหน้าที่ที่ได้รับการรับรอง",
+    confidentialNotice: "ข้อกำหนดการรักษาความลับ:",
+    highlightsHeading: "ผลงานและความรับผิดชอบหลัก:"
+  },
+  journey: {
+    title: "เส้นทางการเดินทางสายอาชีพ",
+    subtitle: "แผนที่การเดินทาง (Waypoints Route) ตั้งแต่รากฐานในมหาวิทยาลัย สู่การฝึกงานในองค์กร และสถานที่ทำงานปัจจุบันในโรงงานอุตสาหกรรม",
+    routeOverview: "แผนที่เส้นทางสายอาชีพ (Career Route)",
+    totalStops: "จุดแวะพัก (Waypoints)",
+    currentStation: "สถานีปัจจุบัน",
+    waypoint: "จุดแวะพัก",
+    statusCompleted: "ผ่านแล้ว",
+    statusActive: "กำลังปฏิบัติงานอยู่ (Active)",
+    typeAcademic: "รากฐานทางวิชาการ",
+    typeInternship: "การฝึกงานระดับองค์กร",
+    typeProfessional: "สถานที่ทำงานปัจจุบัน",
+    coCurricularHeading: "กิจกรรมและบทบาทผู้นำ",
+    techStackHeading: "เทคโนโลยีที่ใช้",
+    confidentialNotice: "ข้อกำหนดการรักษาความลับ:",
+    routeTrackerLabel: "สถานะเส้นทาง",
+    originStation: "สถานีต้นทาง",
+    transitStation: "สถานีเปลี่ยนผ่าน",
+    destinationStation: "ปลายทางปัจจุบัน",
+    viewCompany: "เยี่ยมชมเว็บไซต์บริษัท"
   },
   projects: {
-    title: "ผลงานโปรเจกต์",
-    subtitle: "โปรเจกต์วิศวกรรมซอฟต์แวร์ที่ได้รับการตรวจสอบ ครอบคลุมการพัฒนาบริการ Backend, ออกแบบโครงสร้างฐานข้อมูล และส่วนติดต่อผู้ใช้",
-    featuredTitle: "โปรเจกต์เด่น",
-    featuredDesc: "ความสำเร็จหลักด้านวิศวกรรมจากโปรเจกต์จบการศึกษาและโปรเจกต์ส่วนตัว",
-    additionalTitle: "โปรเจกต์วิชาการเพิ่มเติม",
-    additionalDesc: "การทำงานร่วมกันในหลักสูตรการศึกษาและการพัฒนาเว็บขั้นพื้นฐาน",
-    viewCaseStudy: "ดูรายละเอียดกรณีศึกษา",
-    viewDetails: "ดูรายละเอียดโปรเจกต์",
-    details: "รายละเอียด"
+    title: "ผลงานทางวิศวกรรม",
+    subtitle: "โครงการพัฒนาซอฟต์แวร์จริง ครอบคลุมทั้งบริการฝั่ง Backend, การออกแบบโครงสร้างฐานข้อมูล และ Frontend แบบโต้ตอบ",
+    featuredTitle: "ผลงานเด่น",
+    featuredDesc: "ความสำเร็จทางวิศวกรรมหลักทั้งโปรเจกต์ส่วนตัวและโปรเจกต์จบการศึกษา",
+    additionalTitle: "ผลงานการศึกษาเพิ่มเติม",
+    additionalDesc: "งานกลุ่มในหลักสูตรและการพัฒนาเว็บแอปพลิเคชันพื้นฐาน",
+    viewCaseStudy: "ดู Case Study",
+    viewDetails: "ดูรายละเอียด",
+    details: "รายละเอียด",
+    allFilter: "โปรเจกต์ทั้งหมด",
+    featuredFilter: "โปรเจกต์แนะนำ",
+    academicFilter: "โครงงานวิชาการและเครื่องมือ"
+  },
+  status: {
+    confirmed: "ยืนยันแล้ว",
+    implemented: "เปิดใช้งานแล้ว",
+    inDevelopment: "กำลังพัฒนา",
+    planned: "วางแผนแล้ว"
   },
   projectDetail: {
-    back: "กลับไปหน้าโปรเจกต์",
-    role: "บทบาท",
+    back: "กลับไปยังหน้ารวมผลงาน",
+    role: "บทบาทหน้าที่",
     period: "ระยะเวลา",
     status: "สถานะ",
-    notice: "หมายเหตุ:",
-    overview: "ภาพรวมของโปรเจกต์",
+    notice: "ข้อควรทราบ:",
+    overview: "ภาพรวมโครงการ",
     ownership: "ขอบเขตความรับผิดชอบ",
-    contributions: "ผลงานการพัฒนาของผม",
-    scopeBoundaries: "ขอบเขตการทำงาน (ส่วนที่พัฒนาโดยสมาชิกคนอื่นในทีม)",
-    scopeBoundariesIntro: "เพื่อความถูกต้องและชัดเจนของผลงาน ชิ้นส่วนหรือฟีเจอร์ต่อไปนี้ถูกพัฒนาโดยสมาชิกคนอื่นในทีม:",
-    keyFeatures: "ฟีเจอร์หลัก",
+    contributions: "ผลงานและการมีส่วนร่วม",
+    scopeBoundaries: "ขอบเขตที่ไม่ได้พัฒนา (ส่วนของทีมงานท่านอื่น)",
+    scopeBoundariesIntro: "เพื่อความถูกต้องตามความเป็นจริง รายการต่อไปนี้เป็นฟีเจอร์ที่พัฒนาโดยสมาชิกท่านอื่นในทีม:",
+    keyFeatures: "คุณสมบัติสำคัญ",
     technologies: "เทคโนโลยีที่ใช้",
-    links: "ลิงก์โปรเจกต์",
-    notFoundTitle: "ไม่พบกรณีศึกษาของโปรเจกต์นี้",
-    notFoundText: "โปรเจกต์ที่คุณกำลังค้นหาไม่มีอยู่จริง หรืออาจถูกนำออกจากระบบแล้ว",
-    notFoundBtn: "กลับสู่หน้าหลัก",
-    placeholderLabel: "รูปตัวอย่างชั่วคราว",
-    galleryTitle: "คลังภาพจำลองของโปรเจกต์",
-    gallerySubtitle: "ภาพตัวอย่างหรือแผนภาพสถาปัตยกรรมที่ช่วยอธิบายโครงสร้างระบบ"
+    links: "ลิงก์ที่เกี่ยวข้อง",
+    notFoundTitle: "ไม่พบข้อมูลโครงการ",
+    notFoundText: "โครงการที่คุณกำลังค้นหาไม่มีอยู่หรือถูกนำออกจากระบบแล้ว",
+    notFoundBtn: "กลับสู่หน้ารวมผลงาน",
+    placeholderLabel: "ภาพประกอบตัวอย่าง",
+    galleryTitle: "คลังภาพโครงการ",
+    gallerySubtitle: "ภาพตัวอย่างระบบและโครงสร้างส่วนประกอบของระบบ"
   },
   skills: {
-    title: "ทักษะทางเทคนิค",
-    subtitle: "การจัดหมวดหมู่ทักษะความเชี่ยวชาญ ประสบการณ์พัฒนาโปรเจกต์ และเครื่องมือทางเทคนิคต่างๆ"
+    title: "คลังทักษะทางเทคนิค",
+    subtitle: "รายการภาษา เฟรมเวิร์ก และระบบโครงสร้างพื้นฐานที่ผ่านการใช้งานจริง",
+    professionalSkillsSubtitle: "ทักษะการทำงานร่วมกับผู้อื่นและการคิดเชิงวิศวกรรมที่หล่อหลอมจากประสบการณ์จริง",
+    coreTier: "ความเชี่ยวชาญหลัก",
+    projectTier: "ใช้งานในโปรเจกต์",
+    familiarityTier: "คุ้นเคย & กำลังศึกษา"
   },
   education: {
-    title: "การศึกษา",
-    subtitle: "ประวัติการศึกษาและกิจกรรมความเป็นผู้นำในค่ายนักศึกษา",
-    coCurricular: "กิจกรรมนอกหลักสูตรและความเป็นผู้นำ:"
+    title: "การศึกษาและกิจกรรม",
+    subtitle: "คุณวุฒิการศึกษา มหาวิทยาลัย และกิจกรรมการเป็นผู้นำและพี่เลี้ยงค่าย",
+    coCurricular: "กิจกรรมเสริมหลักสูตรและกิจกรรมนักศึกษา"
   },
   contact: {
-    title: "มาสร้างระบบที่เชื่อถือได้ร่วมกัน",
-    subtitle: "ผมเปิดรับโอกาสในตำแหน่ง Backend Developer และ Full-Stack Developer หากคุณสนใจเกี่ยวกับโอกาสการทำงาน การพูดคุยเรื่องโปรเจกต์ หรือการทำงานร่วมกันทางเทคนิค สามารถติดต่อผมได้ทางอีเมลหรือดูผลงานของผมบน GitHub",
-    lead: "ไม่ว่าคุณจะต้องการออกแบบโครงสร้างฐานข้อมูลที่มั่นคง กำหนดค่าการทำงาน Docker หลายบริการ หรือพัฒนา API ประสิทธิภาพสูงด้วย Go หรือ Java ผมพร้อมร่วมงานกับคุณ",
+    title: "ติดต่อสื่อสาร",
+    subtitle: "สนใจพูดคุยเกี่ยวกับโอกาสในการทำงาน การออกแบบระบบ หรือความร่วมมือทางวิศวกรรม?",
+    lead: "ขณะนี้ผมกำลังเปิดรับโอกาสในตำแหน่ง Junior Backend Developer และ Full-Stack Developer เพื่อร่วมพัฒนาระบบที่มีความสำคัญ",
     sendEmail: "ส่งอีเมล",
-    call: "โทรหาผม",
+    call: "โทรศัพท์",
     githubProfile: "โปรไฟล์ GitHub",
+    linkedinProfile: "โปรไฟล์ LinkedIn",
+    instagramProfile: "โปรไฟล์ Instagram",
+    twitterProfile: "โปรไฟล์ X (Twitter)",
+    facebookProfile: "โปรไฟล์ Facebook",
     copyEmail: "คัดลอกอีเมล",
-    emailCopied: "คัดลอกอีเมลสำเร็จแล้ว!",
-    failedCopy: "คัดลอกไม่สำเร็จ"
+    copiedEmail: "คัดลอกเรียบร้อยแล้ว!",
+    emailCopied: "คัดลอกอีเมลลงคลิปบอร์ดแล้ว!",
+    failedCopy: "ไม่สามารถคัดลอกอีเมลได้"
   },
   footer: {
-    bio: "สร้างสรรค์สถาปัตยกรรม Backend ที่แข็งแกร่ง การเชื่อมต่อ API ที่สะอาด และเครื่องมือสำหรับนักพัฒนา",
-    notes: "Static Developer Portfolio พัฒนาด้วย Vue 3, TS, และ Vite",
+    navigationHeading: "การนำทาง",
+    connectHeading: "การติดต่อ",
+    bio: "อรินทร์ สุดากิจจาธร — นักพัฒนาซอฟต์แวร์สาย Full-Stack ที่เน้นระบบ Backend หลงใหลในประสิทธิภาพของ Go, ฐานข้อมูลเชิงสัมพันธ์ และสถาปัตยกรรมระบบ",
+    notes: "พัฒนาด้วย Vue 3, PrimeVue และ TypeScript โฮสต์บน GitHub Pages",
     rights: "สงวนลิขสิทธิ์ทั้งหมด"
   },
+  notFound: {
+    code: "404",
+    title: "ไม่พบหน้าที่ต้องการ",
+    description: "หน้าที่คุณกำลังค้นหาไม่มีอยู่จริง หรืออาจถูกย้ายตำแหน่งแล้ว",
+    socialTitle: "โซเชียลมีเดียกำลังเตรียมพร้อม",
+    socialDesc: "ช่องทางโซเชียลนี้กำลังอยู่ในขั้นตอนการจัดเตรียมและจะเปิดให้เข้าชมเร็วๆ นี้ ท่านสามารถติดตามผ่าน GitHub หรือ LinkedIn ได้ในระหว่างนี้",
+    backHome: "กลับสู่หน้าหลัก",
+    viewProjects: "ดูผลงานทั้งหมด",
+    exploreAbout: "เกี่ยวกับผม"
+  },
   common: {
-    langSwitch: "EN"
+    langSwitch: "เปลี่ยนภาษา",
+    switchLangToEn: "เปลี่ยนเป็น English",
+    switchLangToTh: "เปลี่ยนเป็นภาษาไทย",
+    themeSwitch: "เปลี่ยนธีม",
+    switchToLight: "สลับเป็นโหมดสว่าง",
+    switchToDark: "สลับเป็นโหมดมืด",
+    lightMode: "โหมดสว่าง",
+    darkMode: "โหมดมืด",
+    success: "สำเร็จ",
+    error: "เกิดข้อผิดพลาด"
   }
 };
