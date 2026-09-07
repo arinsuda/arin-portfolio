@@ -1,4 +1,5 @@
 import type { Education } from "../types";
+import { withBase } from "../utils/assets";
 
 export const educationList: Education[] = [
   {
@@ -28,6 +29,8 @@ export const educationList: Education[] = [
         en: "Staff in SIT Helloworld Goose camp",
         th: "ทีมงานค่ายกิจกรรม SIT Helloworld Goose"
       }
-    ]
+    ],
+    logo: withBase("images/organizations/kmutt.png"),
+    institutionUrl: "https://www.kmutt.ac.th/"
   }
 ];

@@ -48,6 +48,8 @@ export interface Experience {
   technologies: string[];
   isConfidential: boolean;
   confidentialityNote?: LocalizedString;
+  logo?: string;
+  companyUrl?: string;
 }
 
 export type ProjectCategory = 'featured' | 'additional';
@@ -126,6 +128,8 @@ export interface Education {
   degree: LocalizedString;
   duration: LocalizedString;
   activities: LocalizedString[];
+  logo?: string;
+  institutionUrl?: string;
 }
 
 export interface SoftSkill {

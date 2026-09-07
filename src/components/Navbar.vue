@@ -1,106 +1,179 @@
 <template>
-  <nav class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
-    <div class="navbar-container">
+  <header class="navbar-wrapper" :class="{ 'navbar-scrolled': isScrolled }">
+    <div class="container navbar-container">
+      <!-- Logo Monogram -->
       <router-link to="/" class="logo-link">
-        <span class="logo-text">A<span class="text-gradient">rin</span></span>
+        <span class="logo-box">AS</span>
+        <span class="logo-full">Arin<span class="logo-dot">.</span></span>
       </router-link>
 
       <!-- Desktop Navigation Menu -->
-      <ul class="nav-menu" :class="{ active: isMobileMenuOpen }">
-        <li v-for="item in navItems" :key="item.href" class="nav-item">
-          <a
-            v-if="isHomePage"
-            :href="item.href"
-            class="nav-link"
-            @click="handleNavClick($event, item.href)"
-          >
-            {{ item.label }}
-          </a>
-          <router-link
-            v-else
-            :to="'/' + item.href"
-            class="nav-link"
-            @click="isMobileMenuOpen = false"
-          >
-            {{ item.label }}
-          </router-link>
-        </li>
-      </ul>
+      <nav class="desktop-nav">
+        <ul class="nav-links">
+          <li v-for="item in navItems" :key="item.href">
+            <a
+              v-if="isHomePage"
+              :href="item.href"
+              class="nav-link"
+              @click="handleNavClick($event, item.href)"
+            >
+              {{ item.label }}
+            </a>
+            <router-link
+              v-else
+              :to="'/' + item.href"
+              class="nav-link"
+            >
+              {{ item.label }}
+            </router-link>
+          </li>
+        </ul>
+      </nav>
 
+      <!-- Actions Bar (Lang + Theme + Mobile Trigger) -->
       <div class="nav-actions">
-        <!-- Language Switcher -->
-        <button
-          class="lang-toggle"
+        <!-- Language Switcher Button -->
+        <Button
+          severity="secondary"
+          variant="text"
+          rounded
+          class="action-btn lang-btn"
           @click="toggleLanguage"
           :aria-label="locale === 'th' ? 'Switch to English' : 'สลับเป็นภาษาไทย'"
-          id="lang-toggler"
+          :title="locale === 'th' ? 'Switch to English' : 'สลับเป็นภาษาไทย'"
         >
-          <BaseIcon name="language" size="18" class="lang-icon" />
-          <span class="lang-label-text">{{ locale === 'th' ? 'EN' : 'TH' }}</span>
-        </button>
+          <i class="pi pi-globe lang-icon"></i>
+          <span class="lang-text">{{ locale === 'th' ? 'EN' : 'TH' }}</span>
+        </Button>
 
-        <!-- Light/Dark Mode Switcher -->
-        <button
-          class="theme-toggle"
+        <!-- Dark/Light Theme Switcher Button -->
+        <Button
+          severity="secondary"
+          variant="text"
+          rounded
+          class="action-btn theme-btn"
           @click="toggleTheme"
-          :aria-label="locale === 'th' ? 'สลับโหมดธีม' : 'Toggle Theme Mode'"
-          id="theme-toggler"
+          :aria-label="isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+          :title="isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
         >
-          <BaseIcon v-if="isDarkTheme" name="sun" size="18" :aria-label="locale === 'th' ? 'โหมดสว่าง' : 'Light mode'" />
-          <BaseIcon v-else name="moon" size="18" :aria-label="locale === 'th' ? 'โหมดมืด' : 'Dark mode'" />
-        </button>
+          <i :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
+        </Button>
 
-        <!-- Mobile Hamburger Trigger -->
-        <button
-          class="mobile-toggle"
-          :class="{ active: isMobileMenuOpen }"
-          @click="isMobileMenuOpen = !isMobileMenuOpen"
-          :aria-label="locale === 'th' ? 'เปิด/ปิดเมนูนำทาง' : 'Toggle Navigation Menu'"
-          id="hamburger-menu"
+        <!-- Mobile Menu Trigger Button -->
+        <Button
+          severity="secondary"
+          variant="text"
+          rounded
+          class="mobile-menu-trigger"
+          @click="isDrawerOpen = true"
+          aria-label="Open Navigation Menu"
         >
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
+          <i class="pi pi-bars text-xl"></i>
+        </Button>
       </div>
     </div>
-  </nav>
+
+    <!-- PrimeVue Mobile Drawer Menu -->
+    <Drawer
+      v-model:visible="isDrawerOpen"
+      position="right"
+      class="mobile-drawer"
+      :header="locale === 'th' ? 'เมนูนำทาง' : 'Navigation'"
+    >
+      <div class="drawer-content">
+        <ul class="drawer-nav-list">
+          <li v-for="item in navItems" :key="item.href">
+            <a
+              v-if="isHomePage"
+              :href="item.href"
+              class="drawer-nav-link"
+              @click="handleNavClick($event, item.href)"
+            >
+              <i :class="getNavIcon(item.href)" class="drawer-nav-icon"></i>
+              <span>{{ item.label }}</span>
+            </a>
+            <router-link
+              v-else
+              :to="'/' + item.href"
+              class="drawer-nav-link"
+              @click="isDrawerOpen = false"
+            >
+              <i :class="getNavIcon(item.href)" class="drawer-nav-icon"></i>
+              <span>{{ item.label }}</span>
+            </router-link>
+          </li>
+        </ul>
+
+        <div class="drawer-footer">
+          <div class="drawer-settings">
+            <Button
+              severity="secondary"
+              outlined
+              class="w-full flex items-center justify-center gap-2"
+              @click="toggleLanguage"
+            >
+              <i class="pi pi-globe"></i>
+              <span>{{ locale === 'th' ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย' }}</span>
+            </Button>
+            <Button
+              severity="secondary"
+              outlined
+              class="w-full flex items-center justify-center gap-2"
+              @click="toggleTheme"
+            >
+              <i :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
+              <span>{{ isDarkTheme ? 'Light Mode' : 'Dark Mode' }}</span>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </Drawer>
+  </header>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useRoute } from "vue-router";
-import BaseIcon from "./BaseIcon.vue";
+import Button from "primevue/button";
+import Drawer from "primevue/drawer";
 import { useI18n } from "../i18n";
 
 const route = useRoute();
 const isScrolled = ref(false);
-const isMobileMenuOpen = ref(false);
+const isDrawerOpen = ref(false);
 const isDarkTheme = ref(true);
 
 const { t, locale, toggleLanguage } = useI18n();
 
 const navItems = computed(() => [
-  { label: t.value.nav.home, href: "#home" },
   { label: t.value.nav.about, href: "#about" },
   { label: t.value.nav.experience, href: "#experience" },
   { label: t.value.nav.projects, href: "#projects" },
   { label: t.value.nav.skills, href: "#skills" },
-  { label: t.value.nav.professionalSkills, href: "#professional-skills" },
   { label: t.value.nav.education, href: "#education" },
   { label: t.value.nav.contact, href: "#contact" },
 ]);
 
-const isHomePage = computed(() => {
-  return route.path === "/";
-});
+const isHomePage = computed(() => route.path === "/");
+
+const getNavIcon = (href: string) => {
+  switch (href) {
+    case "#about": return "pi pi-user";
+    case "#experience": return "pi pi-briefcase";
+    case "#projects": return "pi pi-folder";
+    case "#skills": return "pi pi-code";
+    case "#education": return "pi pi-book";
+    case "#contact": return "pi pi-envelope";
+    default: return "pi pi-chevron-right";
+  }
+};
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20;
 };
 
 const handleNavClick = (event: Event, href: string) => {
-  isMobileMenuOpen.value = false;
+  isDrawerOpen.value = false;
   const targetId = href.replace("#", "");
   const targetElement = document.getElementById(targetId);
   if (targetElement) {
@@ -113,9 +186,13 @@ const handleNavClick = (event: Event, href: string) => {
 const toggleTheme = () => {
   isDarkTheme.value = !isDarkTheme.value;
   if (isDarkTheme.value) {
+    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("light-theme");
     document.body.classList.remove("light-theme");
     localStorage.setItem("theme", "dark");
   } else {
+    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add("light-theme");
     document.body.classList.add("light-theme");
     localStorage.setItem("theme", "light");
   }
@@ -124,15 +201,18 @@ const toggleTheme = () => {
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
   
-  // Theme check
   const savedTheme = localStorage.getItem("theme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   
   if (savedTheme === "light" || (!savedTheme && !prefersDark)) {
     isDarkTheme.value = false;
+    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add("light-theme");
     document.body.classList.add("light-theme");
   } else {
     isDarkTheme.value = true;
+    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("light-theme");
     document.body.classList.remove("light-theme");
   }
 });
@@ -143,232 +223,197 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.navbar {
+.navbar-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px;
+  height: 76px;
   z-index: 1000;
   display: flex;
   align-items: center;
   border-bottom: 1px solid transparent;
-  transition: height var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
+  transition: all var(--transition-normal);
 }
 
 .navbar-scrolled {
-  height: 70px;
+  height: 68px;
   background-color: var(--glass-bg);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  border-bottom: 1px solid var(--glass-border);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
 }
 
+/* Monogram & Brand Logo */
 .logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  text-decoration: none;
 }
 
-.logo-text {
+.logo-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.logo-link:hover .logo-box {
+  border-color: var(--accent-emerald);
+  transform: scale(1.04);
+}
+
+.logo-full {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
-.nav-menu {
+.logo-dot {
+  color: var(--accent-emerald);
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: block;
+}
+
+.nav-links {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 2rem;
 }
 
 .nav-link {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--text-secondary);
+  transition: color var(--transition-fast);
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
 }
 
 .nav-link:hover {
   color: var(--text-primary);
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-gradient);
-  transition: width var(--transition-fast);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
+/* Actions */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
-.lang-toggle {
-  height: 40px;
-  padding: 0 0.85rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-color);
-  display: flex;
+.action-btn {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  cursor: pointer;
-  color: var(--text-secondary);
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  justify-content: center;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  transition: all var(--transition-fast) !important;
 }
 
-.light-theme .lang-toggle {
-  background: rgba(0, 0, 0, 0.02);
+.action-btn:hover {
+  color: var(--text-primary) !important;
+  border-color: var(--border-hover) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
 }
 
-.lang-toggle:hover {
-  background: rgba(255, 255, 255, 0.06);
-  transform: scale(1.05);
-  border-color: var(--accent-cyan);
-  color: var(--text-primary);
-}
-
-.light-theme .lang-toggle:hover {
-  background: rgba(0, 0, 0, 0.04);
+.lang-btn {
+  width: auto !important;
+  padding: 0 0.85rem !important;
+  gap: 0.4rem;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
 }
 
 .lang-icon {
-  color: var(--text-muted);
-  transition: color var(--transition-fast);
+  font-size: 0.9rem;
 }
 
-.lang-toggle:hover .lang-icon {
-  color: var(--accent-cyan);
+.mobile-menu-trigger {
+  display: none !important;
 }
 
-.lang-label-text {
-  font-family: var(--font-sans);
-}
-
-.theme-toggle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-color);
+/* Mobile Drawer Styling */
+.drawer-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
-}
-
-.light-theme .theme-toggle {
-  background: rgba(0, 0, 0, 0.02);
-}
-
-.theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.06);
-  transform: scale(1.05);
-  border-color: var(--accent-cyan);
-  color: var(--text-primary);
-}
-
-.light-theme .theme-toggle:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.mobile-toggle {
-  display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  cursor: pointer;
-  z-index: 1001;
-  background: transparent;
-  border: none;
-  padding: 0;
+  height: 100%;
+  padding: 1rem 0;
 }
 
-.mobile-toggle .bar {
-  height: 3px;
-  width: 100%;
-  background-color: var(--text-primary);
+.drawer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.drawer-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
   border-radius: 10px;
-  transition: all var(--transition-normal);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
 }
 
-/* Mobile Toggle Hamburger Animation */
-.mobile-toggle.active .bar:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+.drawer-nav-link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-color);
 }
 
-.mobile-toggle.active .bar:nth-child(2) {
-  opacity: 0;
+.drawer-nav-icon {
+  font-size: 1.1rem;
+  color: var(--accent-emerald);
 }
 
-.mobile-toggle.active .bar:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+.drawer-footer {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
 }
 
-@media (max-width: 992px) {
-  .nav-menu {
-    gap: 1rem;
-  }
-  .nav-link {
-    font-size: 0.85rem;
-  }
+.drawer-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-@media (max-width: 820px) {
-  .mobile-toggle {
-    display: flex;
+@media (max-width: 860px) {
+  .desktop-nav {
+    display: none;
   }
-
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 320px;
-    height: 100vh;
-    background-color: var(--bg-secondary);
-    border-left: 1px solid var(--border-color);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    transition: right var(--transition-normal);
-    z-index: 1000;
-  }
-
-  .nav-menu.active {
-    right: 0;
-  }
-
-  .nav-link {
-    font-size: 1.2rem;
+  
+  .mobile-menu-trigger {
+    display: inline-flex !important;
   }
 }
 </style>

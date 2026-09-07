@@ -3,10 +3,13 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">{{ t.nav.about }}</h2>
+        <p class="section-subtitle">
+          {{ locale === 'th' ? 'ข้อมูลเบื้องหลัง แนวคิดทางวิศวกรรมซอฟต์แวร์ และความสนใจหลักของผม' : 'Background, engineering philosophy, and core architectural focus areas.' }}
+        </p>
       </div>
 
       <div class="about-layout">
-        <!-- Left: Text Details -->
+        <!-- Left: Text Details & Core Interests -->
         <div class="about-content">
           <p class="about-p">
             {{ locale === 'th' ? thText.p1 : enText.p1 }}
@@ -15,79 +18,109 @@
             {{ locale === 'th' ? thText.p2 : enText.p2 }}
           </p>
 
-          <!-- Core Interests / Directions -->
+          <!-- Core Architecture & System Interests with PrimeVue Card -->
           <div class="interests-grid">
-            <div class="interest-item glass-card">
-              <BaseIcon name="server" size="20" stroke-width="2" class="interest-icon" />
-              <div class="interest-text">
-                <h4 class="interest-title">{{ locale === 'th' ? 'เน้นระบบหลังบ้านและฐานข้อมูล' : 'Backend & System Focus' }}</h4>
-                <p class="interest-desc">{{ locale === 'th' ? 'ออกแบบฐานข้อมูล (SQL/NoSQL) และเขียน API ประสิทธิภาพสูง' : 'Designing schemas, optimizing queries, and building scalable API services.' }}</p>
-              </div>
-            </div>
-            <div class="interest-item glass-card">
-              <BaseIcon name="layers" size="20" stroke-width="2" class="interest-icon" />
-              <div class="interest-text">
-                <h4 class="interest-title">{{ locale === 'th' ? 'ความเข้าใจในภาพรวมระบบ' : 'System-Wide Understanding' }}</h4>
-                <p class="interest-desc">{{ locale === 'th' ? 'เชื่อต่อ Backend, ฐานข้อมูล, ระบบความปลอดภัย และ Infrastructure เข้าด้วยกัน' : 'Connecting APIs, relational schemas, storage systems, and VM network deployments.' }}</p>
-              </div>
-            </div>
+            <Card class="interest-card">
+              <template #content>
+                <div class="interest-inner">
+                  <div class="interest-icon-box">
+                    <i class="pi pi-server text-xl"></i>
+                  </div>
+                  <div class="interest-text">
+                    <h4 class="interest-title">
+                      {{ locale === 'th' ? 'เน้นระบบหลังบ้านและฐานข้อมูล' : 'Backend & System Focus' }}
+                    </h4>
+                    <p class="interest-desc">
+                      {{ locale === 'th' ? 'ออกแบบโครงสร้างฐานข้อมูล (SQL/NoSQL) และพัฒนา RESTful APIs ที่มีประสิทธิภาพสูง' : 'Designing relational schemas, query optimization, and high-performance RESTful API services.' }}
+                    </p>
+                  </div>
+                </div>
+              </template>
+            </Card>
+
+            <Card class="interest-card">
+              <template #content>
+                <div class="interest-inner">
+                  <div class="interest-icon-box">
+                    <i class="pi pi-sitemap text-xl"></i>
+                  </div>
+                  <div class="interest-text">
+                    <h4 class="interest-title">
+                      {{ locale === 'th' ? 'ความเข้าใจในภาพรวมระบบ' : 'System-Wide Understanding' }}
+                    </h4>
+                    <p class="interest-desc">
+                      {{ locale === 'th' ? 'เชื่อมต่อ API, ฐานข้อมูล, ความปลอดภัย, การจัดเก็บไฟล์ และ Deployment เข้าด้วยกัน' : 'Connecting APIs, relational schemas, storage systems, security, and VM network deployments.' }}
+                    </p>
+                  </div>
+                </div>
+              </template>
+            </Card>
           </div>
         </div>
 
-        <!-- Right: Profile Photo Gallery -->
+        <!-- Right: Profile Photo Gallery with PrimeVue Image Preview -->
         <div class="about-visual" v-if="profile.profileImages && profile.profileImages.length > 0">
-          <div class="glass-frame">
-            <!-- Active Image Display -->
+          <div class="gallery-wrapper glass-card">
             <div 
-              class="active-photo-wrapper"
+              class="active-photo-container"
               @mouseenter="stopSlideshow"
               @mouseleave="startSlideshow"
             >
-              <transition name="fade" mode="out-in">
-                <img 
+              <!-- PrimeVue Image with Preview Zoom -->
+              <div class="image-preview-frame">
+                <Image
                   :key="activeImage.id"
-                  :src="activeImage.src" 
-                  :alt="locale === 'th' ? activeImage.alt.th : activeImage.alt.en" 
-                  class="active-photo-img"
+                  :src="activeImage.src"
+                  :alt="locale === 'th' ? activeImage.alt.th : activeImage.alt.en"
+                  preview
+                  imageClass="main-preview-img"
                 />
-              </transition>
-              <div class="photo-caption" v-if="activeImage.caption">
-                <span class="caption-text">{{ locale === 'th' ? activeImage.caption.th : activeImage.caption.en }}</span>
               </div>
 
-              <!-- Navigation Arrows -->
-              <button 
-                class="nav-arrow prev" 
-                @click="prevImage" 
-                :aria-label="locale === 'th' ? 'รูปก่อนหน้า' : 'Previous image'"
-                v-if="profile.profileImages.length > 1"
-              >
-                <BaseIcon name="arrow-left" size="18" stroke-width="2" />
-              </button>
-              <button 
-                class="nav-arrow next" 
-                @click="nextImage" 
-                :aria-label="locale === 'th' ? 'รูปถัดไป' : 'Next image'"
-                v-if="profile.profileImages.length > 1"
-              >
-                <BaseIcon name="arrow-right" size="18" stroke-width="2" />
-              </button>
+              <!-- Caption -->
+              <div class="photo-caption" v-if="activeImage.caption">
+                <span>{{ locale === 'th' ? activeImage.caption.th : activeImage.caption.en }}</span>
+              </div>
+
+              <!-- Navigation Controls with PrimeVue Button -->
+              <div class="gallery-controls" v-if="profile.profileImages.length > 1">
+                <Button
+                  severity="secondary"
+                  rounded
+                  size="small"
+                  class="gallery-nav-btn prev-btn"
+                  @click="prevImage"
+                  :aria-label="locale === 'th' ? 'รูปก่อนหน้า' : 'Previous image'"
+                >
+                  <i class="pi pi-chevron-left"></i>
+                </Button>
+                <Button
+                  severity="secondary"
+                  rounded
+                  size="small"
+                  class="gallery-nav-btn next-btn"
+                  @click="nextImage"
+                  :aria-label="locale === 'th' ? 'รูปถัดไป' : 'Next image'"
+                >
+                  <i class="pi pi-chevron-right"></i>
+                </Button>
+              </div>
             </div>
 
-            <!-- Thumbnail List (if > 1 image exists) -->
-            <div class="thumbnails-container" v-if="profile.profileImages.length > 1">
+            <!-- Thumbnail Navigation Strip -->
+            <div class="thumbnails-strip" v-if="profile.profileImages.length > 1">
               <button 
                 v-for="img in profile.profileImages" 
                 :key="img.id"
-                class="thumbnail-btn"
+                class="thumb-btn"
                 :class="{ active: img.id === activeImage.id }"
                 @click="setActiveImage(img)"
-                :aria-label="locale === 'th' ? 'ดูรูปภาพ: ' + img.alt.th : 'View image: ' + img.alt.en"
+                :aria-label="locale === 'th' ? 'ดูรูป: ' + img.alt.th : 'View: ' + img.alt.en"
               >
                 <img 
                   :src="img.src" 
                   :alt="locale === 'th' ? img.alt.th : img.alt.en" 
-                  class="thumbnail-img"
+                  class="thumb-img"
                   loading="lazy"
                 />
               </button>
@@ -101,14 +134,15 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import BaseIcon from "../components/BaseIcon.vue";
+import Card from "primevue/card";
+import Image from "primevue/image";
+import Button from "primevue/button";
 import { profile } from "../data/profile";
 import { useI18n } from "../i18n";
 import type { ProfileImage } from "../types";
 
 const { t, locale } = useI18n();
 
-// Select primary image by default
 const primaryImage = profile.profileImages.find(img => img.isPrimary) || profile.profileImages[0];
 const activeImage = ref<ProfileImage>(primaryImage);
 
@@ -119,7 +153,7 @@ const startSlideshow = () => {
   stopSlideshow();
   intervalId = setInterval(() => {
     nextImage();
-  }, 4000); // Auto slide every 4 seconds
+  }, 4500);
 };
 
 const stopSlideshow = () => {
@@ -143,7 +177,6 @@ const prevImage = () => {
 
 const setActiveImage = (img: ProfileImage) => {
   activeImage.value = img;
-  // Restart slideshow on user interaction to reset the timer
   startSlideshow();
 };
 
@@ -155,7 +188,6 @@ onUnmounted(() => {
   stopSlideshow();
 });
 
-// Paragraph drafts
 const enText = {
   p1: "I am a Backend-Focused Full-Stack Developer and Information Technology graduate from King Mongkut’s University of Technology Thonburi. My experience spans backend development, database design, infrastructure, and frontend implementation through academic projects, a personal platform, and an enterprise software internship.",
   p2: "I prefer to understand how an entire system works rather than treating features as isolated pieces. I focus on API design, relational data modeling, real-time communication, object storage, authentication, and deployment infrastructure. I approach new technologies carefully, question design decisions, and aim to build software that is not only functional but also maintainable and understandable."
@@ -169,7 +201,6 @@ const thText = {
 
 <style scoped>
 .about-section {
-  padding: 6rem 0;
   position: relative;
 }
 
@@ -185,199 +216,180 @@ const thText = {
 }
 
 .about-p {
-  font-size: 1.15rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
 }
 
+/* Interest Cards */
 .interests-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+  gap: 1.25rem;
+  margin-top: 2rem;
 }
 
-.interest-item {
+.interest-card {
+  border-radius: 14px !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.interest-card:hover {
+  border-color: var(--border-hover) !important;
+  transform: translateY(-2px);
+}
+
+.interest-inner {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1.5rem;
+  gap: 1.25rem;
 }
 
-.interest-icon {
-  color: var(--accent-cyan);
-  margin-top: 0.2rem;
-}
-
-.interest-text {
-  text-align: left;
+.interest-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-emerald);
+  flex-shrink: 0;
 }
 
 .interest-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
 
 .interest-desc {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-muted);
 }
 
-/* Photo Gallery Frame Styles */
+/* Gallery Box */
 .about-visual {
   display: flex;
   justify-content: center;
 }
 
-.glass-frame {
-  position: relative;
+.gallery-wrapper {
   padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 24px;
-  box-shadow: var(--shadow-lg);
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
+  border-radius: 20px;
 }
 
-.active-photo-wrapper {
+.active-photo-container {
   position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
+}
+
+.image-preview-frame :deep(.main-preview-img) {
   width: 100%;
   aspect-ratio: 4/5;
-  border-radius: 16px;
-  overflow: hidden;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-}
-
-.active-photo-img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  transition: opacity var(--transition-normal);
+  display: block;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 .photo-caption {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   padding: 0.75rem 1rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+  background: rgba(9, 9, 11, 0.75);
+  backdrop-filter: blur(8px);
   color: #ffffff;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
-.thumbnails-container {
+.gallery-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  pointer-events: none;
+}
+
+.gallery-nav-btn {
+  pointer-events: auto;
+  width: 34px !important;
+  height: 34px !important;
+  background: rgba(9, 9, 11, 0.6) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.gallery-nav-btn:hover {
+  background: rgba(9, 9, 11, 0.9) !important;
+}
+
+/* Thumbnail Strip */
+.thumbnails-strip {
+  display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.85rem;
+  justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
 }
 
-.thumbnail-btn {
-  width: 50px;
-  height: 62.5px; /* keep aspect ratio 4:5 */
-  border-radius: 6px;
+.thumb-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
   overflow: hidden;
-  padding: 0;
-  border: 2px solid transparent;
-  cursor: pointer;
+  border: 2px solid var(--border-color);
   background: var(--bg-tertiary);
-  transition: border-color var(--transition-fast), transform var(--transition-fast);
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.6;
+  transition: all var(--transition-fast);
 }
 
-.thumbnail-btn:hover {
-  transform: translateY(-2px);
+.thumb-btn:hover {
+  opacity: 0.9;
 }
 
-.thumbnail-btn.active {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+.thumb-btn.active {
+  opacity: 1;
+  border-color: var(--accent-emerald);
+  transform: scale(1.05);
 }
 
-.thumbnail-img {
+.thumb-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Navigation Arrows */
-.nav-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(18, 20, 32, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 5;
-}
-
-.active-photo-wrapper:hover .nav-arrow {
-  opacity: 1;
-}
-
-.nav-arrow.prev {
-  left: 10px;
-}
-
-.nav-arrow.next {
-  right: 10px;
-}
-
-.nav-arrow:hover {
-  background: rgba(18, 20, 32, 0.85);
-  transform: translateY(-50%) scale(1.1);
-  color: var(--accent-cyan);
-}
-
-.nav-arrow:active {
-  transform: translateY(-50%) scale(0.95);
-}
-
-/* Fade Transition */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity var(--transition-normal);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
   .about-layout {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
-  .about-visual {
-    order: -1; /* Place image on top on smaller screens */
-  }
 
-  .glass-frame {
-    max-width: 320px;
+  .about-visual {
+    order: -1;
   }
 }
 </style>

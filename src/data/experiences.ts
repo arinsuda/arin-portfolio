@@ -1,4 +1,5 @@
 import type { Experience } from "../types";
+import { withBase } from "../utils/assets";
 
 export const experiences: Experience[] = [
   {
@@ -91,6 +92,8 @@ export const experiences: Experience[] = [
     confidentialityNote: {
       en: "This project is proprietary enterprise software. Codebases, repository links, internal screenshots, client data, and Figma designs are confidential and not publicly available.",
       th: "โปรเจกต์นี้เป็นซอฟต์แวร์เฉพาะขององค์กร โค้ด ลิงก์จัดเก็บโค้ด ภาพหน้าจอภายในระบบ ข้อมูลลูกค้า และการออกแบบบน Figma จะไม่ถูกเปิดเผยต่อสาธารณะ"
-    }
+    },
+    logo: withBase("images/organizations/stream-it.png"),
+    companyUrl: "https://www.stream.co.th/"
   }
 ];
