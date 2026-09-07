@@ -135,11 +135,10 @@ const footerSocials = computed<FooterSocialItem[]>(() => {
 
 /* Minimalist Modern Footer */
 .footer {
-  background-color: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
   padding: 5rem 0 0;
   margin-top: auto;
-  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+  transition: border-color var(--transition-normal);
 }
 
 .footer-container {
@@ -246,7 +245,6 @@ const footerSocials = computed<FooterSocialItem[]>(() => {
 .footer-bottom {
   border-top: 1px solid var(--border-color);
   padding: 1.75rem 0;
-  background-color: var(--bg-primary);
 }
 
 .footer-bottom-inner {

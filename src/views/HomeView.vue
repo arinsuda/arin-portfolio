@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <!-- Hero Section -->
-    <section class="hero-section textured-grid-primary">
+    <section class="hero-section">
       <div
         class="spotlight"
         :style="{ left: mouseX + 'px', top: mouseY + 'px' }"

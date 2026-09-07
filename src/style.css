@@ -104,6 +104,13 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background-image: url("./assets/noise.png");
+  background-size: 200px 200px;
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--text-primary);
@@ -180,23 +187,10 @@ section {
   box-shadow: var(--shadow-xl), 0 0 20px -5px var(--accent-glow);
 }
 
-/* --- Textured Backgrounds --- */
-.textured-grid-primary {
-  background-image: 
-    radial-gradient(circle at 50% 15%, transparent 20%, var(--bg-primary) 85%),
-    radial-gradient(var(--bg-texture-dot) 1.25px, transparent 1.25px),
-    linear-gradient(var(--bg-texture-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--bg-texture-grid) 1px, transparent 1px);
-  background-size: 100% 100%, 36px 36px, 36px 36px, 36px 36px;
-  background-position: center, 0 0, 0 0, 0 0;
-}
-
+/* --- Noise Texture (Inherited from body) --- */
+.textured-grid-primary,
 .textured-grid-secondary {
-  background-image: 
-    radial-gradient(circle at 50% 50%, transparent 25%, var(--bg-secondary) 90%),
-    radial-gradient(var(--bg-texture-dot-subtle) 1px, transparent 1px);
-  background-size: 100% 100%, 28px 28px;
-  background-position: center, 0 0;
+  background: transparent;
 }
 
 /* --- Section Headers (Minimalist & Punchy) --- */
